@@ -1,11 +1,21 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
+        <loc>
+            http://nzjames.github.com/nzjames/blog/2012/12/15/my-luumin-development-environment/
+        </loc>
+        <lastmod>2012-12-15T16:43:58-05:00</lastmod>
+    </url>
+    <url>
         <loc>http://nzjames.github.com/nzjames/blog/archives/</loc>
-        <lastmod>2012-12-06T15:35:03-05:00</lastmod>
+        <lastmod>2012-12-15T16:43:58-05:00</lastmod>
     </url>
     <url>
         <loc>http://nzjames.github.com/nzjames/</loc>
-        <lastmod>2012-12-06T15:35:03-05:00</lastmod>
+        <lastmod>2012-12-15T16:43:58-05:00</lastmod>
+    </url>
+    <url>
+        <loc>http://nzjames.github.com/nzjames/about/</loc>
+        <lastmod>2012-12-15T14:59:40-05:00</lastmod>
     </url>
 </urlset>
