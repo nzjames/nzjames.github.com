@@ -4,7 +4,7 @@
   <title><![CDATA[James Magness]]></title>
   <link href="http://nzjames.github.com/nzjames/atom.xml" rel="self"/>
   <link href="http://nzjames.github.com/nzjames/"/>
-  <updated>2012-12-15T18:36:09-05:00</updated>
+  <updated>2012-12-16T13:10:31-05:00</updated>
   <id>http://nzjames.github.com/nzjames/</id>
   <author>
     <name><![CDATA[James Magness]]></name>
@@ -18,7 +18,7 @@
     <link href="http://nzjames.github.com/nzjames/blog/2012/12/15/javascript-namespace-snippet/"/>
     <updated>2012-12-15T18:31:00-05:00</updated>
     <id>http://nzjames.github.com/nzjames/blog/2012/12/15/javascript-namespace-snippet</id>
-    <content type="html"><![CDATA[<p>Coming back to JQuery and vanillajs after developing with YUI left me wanting to clean up a lot of code. I found I had no consistant Namespace patten. This has been lifted from the HTML5 mobile boilerplate but has been around a lot longer.</p>
+    <content type="html"><![CDATA[<p>Coming back to JQuery and vanillajs after developing with YUI left me wanting to clean up a lot of code. I found I had no consistant Namespace patten. This has been lifted from the HTML5 mobile boilerplate.</p>
 
 <pre class="codepen" data-height="300" data-type="js" data-href="hkjfy" data-user="nzjames" data-safe="true"><code>/**
  * 2012-11-28 - JRM
@@ -30,15 +30,15 @@
 (function(document) {
 
     window.NS = window.NS || {};
-    
+
     NS.resultNode = document.getElementById('result');
-    
+
     NS.fn1 = function () {
         NS.resultNode.innerHTML = &quot;Hello Namespace&quot;;
     };
-    
-})(document);    
-    
+
+})(document);
+
 NS.fn1();</code></pre>
 
 
@@ -54,7 +54,7 @@ NS.fn1();</code></pre>
     <id>http://nzjames.github.com/nzjames/blog/2012/12/15/my-luumin-development-environment</id>
     <content type="html"><![CDATA[<h2>The Stack</h2>
 
-<p>Luumin is the ultimate task list for creative people.  But just being creative <em>and</em> using Luumin isn&#8217;t quite enough to actually build the product.  Here are the tools that I use as the front end lead to get the job done.</p>
+<p><a href="http://luumin.com">Luumin</a> is the ultimate task list for creative people.  But just being creative <em>and</em> using Luumin isn&#8217;t quite enough to actually build the product.  Here are the tools that I use as the front end lead to get the job done.</p>
 
 <p>The Luumin architecture is a modern LAMP stack, we&#8217;ve swapped out the M(ysql) for Cassandra as the primary data store and built the backend as a platform from day one so all clients connect through our public API.</p>
 
