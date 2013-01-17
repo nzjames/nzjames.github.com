@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Frontend | James Magness]]></title>
-  <link href="http://nzjamesblog.com/blog/categories/frontend/atom.xml" rel="self"/>
-  <link href="http://nzjamesblog.com/"/>
-  <updated>2013-01-17T04:51:34-05:00</updated>
-  <id>http://nzjamesblog.com/</id>
+  <link href="http://nzjames.github.com/blog/categories/frontend/atom.xml" rel="self"/>
+  <link href="http://nzjames.github.com/"/>
+  <updated>2013-01-17T05:00:17-05:00</updated>
+  <id>http://nzjames.github.com/</id>
   <author>
     <name><![CDATA[James Magness]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[JavaScript Namespace Snippet]]></title>
-    <link href="http://nzjamesblog.com/blog/2012/12/15/javascript-namespace-snippet/"/>
+    <link href="http://nzjames.github.com/blog/2012/12/15/javascript-namespace-snippet/"/>
     <updated>2012-12-15T18:31:00-05:00</updated>
-    <id>http://nzjamesblog.com/blog/2012/12/15/javascript-namespace-snippet</id>
+    <id>http://nzjames.github.com/blog/2012/12/15/javascript-namespace-snippet</id>
     <content type="html"><![CDATA[<p>Coming back to JQuery and vanillajs after developing with YUI left me wanting to clean up a lot of code. I found I had no consistant Namespace patten. This has been lifted from the HTML5 mobile boilerplate.</p>
 
 <pre class="codepen" data-height="300" data-type="js" data-href="hkjfy" data-user="nzjames" data-safe="true"><code>/**
