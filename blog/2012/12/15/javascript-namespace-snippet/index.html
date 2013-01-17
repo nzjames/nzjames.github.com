@@ -5,7 +5,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>James Magness</title>
+  <title>JavaScript Namespace Snippet - James Magness</title>
   <meta name="author" content="James Magness">
 
   
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://nzjames.github.com/">
+  <link rel="canonical" href="http://nzjames.github.com/blog/2012/12/15/javascript-namespace-snippet/">
   <link href="/nzjames/favicon.png" rel="icon">
   <link href="/nzjames/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/nzjames/javascripts/modernizr-2.0.js"></script>
@@ -63,15 +63,12 @@
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article class="hentry" role="article">
   
-  
-  
-    <article>
-      
   <header>
     
-      <h1 class="entry-title"><a href="/nzjames/blog/2012/12/15/javascript-namespace-snippet/">JavaScript Namespace Snippet</a></h1>
+      <h1 class="entry-title">JavaScript Namespace Snippet</h1>
     
     
       <p class="meta">
@@ -94,7 +91,7 @@
   </header>
 
 
-  <div class="entry-content"><p>Coming back to JQuery and vanillajs after developing with YUI left me wanting to clean up a lot of code. I found I had no consistant Namespace patten. This has been lifted from the HTML5 mobile boilerplate.</p>
+<div class="entry-content"><p>Coming back to JQuery and vanillajs after developing with YUI left me wanting to clean up a lot of code. I found I had no consistant Namespace patten. This has been lifted from the HTML5 mobile boilerplate.</p>
 
 <pre class="codepen" data-height="300" data-type="js" data-href="hkjfy" data-user="nzjames" data-safe="true"><code>/**
  * 2012-11-28 - JRM
@@ -121,22 +118,16 @@ NS.fn1();</code></pre>
 <script async src="http://codepen.io/assets/embed/ei.js"></script>
 
 </div>
-  
-  
 
 
-    </article>
-  
-  
-    <article>
+  <footer>
+    <p class="meta">
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/nzjames/blog/2012/12/15/my-luumin-development-environment/">My Luumin Development Environment</a></h1>
-    
-    
-      <p class="meta">
-        
+  
+
+<span class="byline author vcard">Posted by <span class="fn">James Magness</span></span>
+
+      
 
 
 
@@ -148,59 +139,38 @@ NS.fn1();</code></pre>
   
 
 
-<time datetime="2012-12-15T15:02:00-05:00" pubdate data-updated="true">Dec 15<span>th</span>, 2012</time>
-        
-      </p>
+<time datetime="2012-12-15T18:31:00-05:00" pubdate data-updated="true">Dec 15<span>th</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/nzjames/blog/categories/frontend/'>Frontend</a>, <a class='category' href='/nzjames/blog/categories/javascript/'>JavaScript</a>, <a class='category' href='/nzjames/blog/categories/snippet/'>Snippet</a>
+  
+</span>
+
+
+    </p>
     
-  </header>
-
-
-  <div class="entry-content"><h2>The Stack</h2>
-
-<p><a href="http://luumin.com">Luumin</a> is the ultimate task list for creative people.  But just being creative <em>and</em> using Luumin isn&#8217;t quite enough to actually build the product.  Here are the tools that I use as the front end lead to get the job done.</p>
-
-<p>The Luumin architecture is a modern LAMP stack, we&#8217;ve swapped out the M(ysql) for Cassandra as the primary data store and built the backend as a platform from day one so all clients connect through our public API.</p>
-
-<p>The stack doesn&#8217;t really explain the front end does it? <strong>Luumin is an HTML5 application built using YUI Framework</strong>, the reason for choosing YUI is <a href="https://dl.dropbox.com/u/8568544/talks/2012/why-yui/index.html#/6">because it is awesome</a>.</p>
-
-<h2>My Workflow</h2>
-
-<p>ssh > screen > vim > builder/shifter > browser > svn</p>
-
-<p>Simple eh?</p>
-
-<p>I do all my development remotely via SSH.  It&#8217;s a habit I picked up while doing Unix server administration a long time ago.  It limits me to work only when I&#8217;ve got connectivity, but I can work on any connection.</p>
-
-<p>GNU Screen is the first thing I fire up every time I connect to the server.  From one session SSH session I usually run three shells, the first for the markup/css, the second for the JavaScript source and the third for compiling the source.  Screen sessions can be disconnected and reconnected to, this means I can sit down at any computer and reconnect exactly where I left off and my development environment is persisted on the  server.</p>
-
-<p>Vim is the second habit I picked up doing Unix admin. I roll with a messy config I&#8217;ve built over the years. I use tabs over buffers. Pathogen for plugin management, and only a few crucial plugins: jslint, nerdtree, vim-less, vim-yui.</p>
-
-<p>Builder is Yahoo&#8217;s legacy Ant build system.  Shifter is the brand new node.js based build system that We&#8217;re migrating to.  Lint code, build modules, strip console logs, minify source.</p>
-
-<p>Chrome current is my browser of choice.  It&#8217;s been my primary development browser for about two years.  The development tools are just better.  I spend most of my time switching between Network and Source tabs always with the console underneith.</p>
-
-<p>Still on SVN, locally hosted.  Simple deploy workflow only deploying the minified built source to production.</p>
-
-<h2>Hardware</h2>
-
-<p>I dev on a 2008 Macbook at home and an Ubuntu 12.10 workstation at the office. Hardware doesn&#8217;t really matter. Because my workflow is all based on the server, give me a network connection, an SSH client and a browser and I&#8217;m happy.</p>
-
-<hr />
-
-<p>So that&#8217;s my setup.  It varies on other projects, my PHP dev which has historically been done in Vim has moved exclusivly to NetBeans for need of the debugger.  Other side project are very similar to this but won&#8217;t necessarily have the build phase and are probably in a git repo.</p>
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://nzjames.github.com/blog/2012/12/15/javascript-namespace-snippet/" data-via="" data-counturl="http://nzjames.github.com/blog/2012/12/15/javascript-namespace-snippet/" >Tweet</a>
+  
+  
+  
 </div>
-  
-  
 
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/nzjames/blog/2012/12/15/my-luumin-development-environment/" title="Previous Post: My Luumin Development Environment">&laquo; My Luumin Development Environment</a>
+      
+      
+    </p>
+  </footer>
+</article>
 
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/nzjames/blog/archives">Blog Archives</a>
-    
-  </div>
 </div>
+
 <aside class="sidebar">
   
     <section>
@@ -225,6 +195,7 @@ NS.fn1();</code></pre>
 
   
 </aside>
+
 
     </div>
   </div>
