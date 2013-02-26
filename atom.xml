@@ -4,7 +4,7 @@
   <title><![CDATA[James Magness]]></title>
   <link href="http://nzjames.github.com/atom.xml" rel="self"/>
   <link href="http://nzjames.github.com/"/>
-  <updated>2013-02-14T15:53:42-05:00</updated>
+  <updated>2013-02-26T03:55:07-05:00</updated>
   <id>http://nzjames.github.com/</id>
   <author>
     <name><![CDATA[James Magness]]></name>
@@ -12,33 +12,6 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
-  
-  <entry>
-    <title type="html"><![CDATA[Webstock 2013 Day 1]]></title>
-    <link href="http://nzjames.github.com/blog/2013/02/14/webstock-2013-day-1/"/>
-    <updated>2013-02-14T14:30:00-05:00</updated>
-    <id>http://nzjames.github.com/blog/2013/02/14/webstock-2013-day-1</id>
-    <content type="html"><![CDATA[<p>Pre webstock there was twitter talk of webstock being expensive.  While not cheap as I can testify paying my own way this year, the value and inspiration from two days immersed with peers and heros is undeniable.  The production value is so polished and the speakers are so well looked after they often clam Webstock is their favourite confrence.</p>
-
-<p>Highlights from day one:</p>
-
-<p>Clay Johnson illustrated all of our ignorance to important local issues and opened our eyes to industrialised media and the damage it is causing society.</p>
-
-<p>Jim Coudal told us to trust our gut and to track our goals not simply set them and don&#8217;t look at them again because when you reach a goal your perspective may hav changed.</p>
-
-<p>Artur Bergman gave the first interesting technical talk however I imagine he could have gone a lot more technical if given the chance.  I think he struck a great balance giving a really practical talk and teaching everyone a few things about CDNs and ways they <em>will</em> make our sites faster.</p>
-
-<p>Chris Coyier gave a really fun run through of his workflow dropping tips and tricks along the way.</p>
-
-<p>Craig Mod gave some great stories on books and publishing and the special place we reserve for our love of literature.  I think he opened our eyes to an emerging industry that is being driven by maturity of blogging and publishing online and showed us some of the ways subcompact publishing is disrupting the incumbents.</p>
-
-<p>Tom Coats picked up where he left off in 2011 for his love of the network and connected things. He gave us insights on why connecting the appliances in our home might be a good idea. He promised twitter clients in all our refrigerators and did the Winnie the Pooh dance.</p>
-
-<p>Day one was choc full of awesome, I haven&#8217;t even mentioned the BNZ  Startup Alley! Day two is about to start and  is set to be amazing.</p>
-
-<p>J</p>
-]]></content>
-  </entry>
   
   <entry>
     <title type="html"><![CDATA[JavaScript Namespace Snippet]]></title>
