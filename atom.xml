@@ -4,7 +4,7 @@
   <title><![CDATA[James Magness]]></title>
   <link href="http://nzjames.github.com/atom.xml" rel="self"/>
   <link href="http://nzjames.github.com/"/>
-  <updated>2013-03-16T00:22:13-04:00</updated>
+  <updated>2013-03-16T00:32:02-04:00</updated>
   <id>http://nzjames.github.com/</id>
   <author>
     <name><![CDATA[James Magness]]></name>
@@ -30,7 +30,7 @@
 
 <p>Boot the Pi with the SD card, it takes a short while finishing the base install and updating.</p>
 
-<p>When the Pi has finished installing it will land you on a blue dashboard, using the keyboard to navigate, move to the right and select the System > Settings menu</p>
+<p>When the Pi has finished installing it will land you on a blue dashboard, using the keyboard to navigate, move to the right and select the System > Settings menu.</p>
 
 <ol>
 <li>From the System > Audio output, set the Audio output to Analog.</li>
@@ -38,15 +38,15 @@
 </ol>
 
 
-<p>From your iDevice launch an audio player, I&#8217;m using Soma FM&#8217;s player but Music or any other player will work too.</p>
+<p>From your iDevice launch an audio player, I&#8217;m using Soma FM&#8217;s app but Music or any other App supporting AirPlay will work too.</p>
 
 <p>If AirPlay is enabled on the Pi the apps on iPhone should display the AirPlay icon and you can select the “XBMC (raspbmc)” option and start streaming.</p>
 
 <p>You can leave the monitor and keyboard plugged in and even stream video from YouTube, but I think there is something cool about having the minimal pieces of the puzzel and using it just for audio.</p>
 
-<p>It should be possible to get this going wireless with a USB wifi dongle. This is next on my list.</p>
+<p>It should be possible to get this going wireless with a USB wifi dongle. This is next on my list but everything in this guide assumes wired network.</p>
 
-<p>iTunes doesn&#8217;t seem to want to switch over to e XBMC but iPhones and iPads are working great. And thanks to the massive range of Apps like SomaFM, rdio, Soundcloud, etc. there doesn&#8217;t seem to be a limit on choice.</p>
+<p>iTunes doesn&#8217;t seem to want to switch over to XBMC but iPhones and iPads are working great. And thanks to the massive range of Apps like SomaFM, rdio, Soundcloud, etc. there doesn&#8217;t seem to be a limit on choice.</p>
 
 <p>Enjoy. J</p>
 ]]></content>
