@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>JavaScript Namespace Snippet - James Magness</title>
+  <title>AirPlay on Raspberry Pi - James Magness</title>
   <meta name="author" content="James Magness">
 
   
-  <meta name="description" content="Coming back to JQuery and vanillajs after developing with YUI left me wanting to clean up a lot of code. I found I had no consistant Namespace patten &hellip;">
+  <meta name="description" content="Raspberry Pi is an awesome tiny cheap computer. It’s not super powerful but that’s not the point. It runs linux out of the box. Lots of work has been &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://nzjames.github.com/blog/2012/12/15/javascript-namespace-snippet/">
+  <link rel="canonical" href="http://nzjames.github.com/blog/2013/03/16/airplay-on-raspberry-pi/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -68,7 +68,7 @@
   
   <header>
     
-      <h1 class="entry-title">JavaScript Namespace Snippet</h1>
+      <h1 class="entry-title">AirPlay on Raspberry Pi</h1>
     
     
       <p class="meta">
@@ -84,39 +84,46 @@
   
 
 
-<time datetime="2012-12-15T18:31:00-05:00" pubdate data-updated="true">Dec 15<span>th</span>, 2012</time>
+<time datetime="2013-03-16T00:09:00-04:00" pubdate data-updated="true">Mar 16<span>th</span>, 2013</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p>Coming back to JQuery and vanillajs after developing with YUI left me wanting to clean up a lot of code. I found I had no consistant Namespace patten. This has been lifted from the HTML5 mobile boilerplate.</p>
+<div class="entry-content"><p>Raspberry Pi is an awesome tiny cheap computer.  It’s not super powerful but that’s not the point.  It runs linux out of the box.  Lots of work has been done on distros to strip out the unnecessary parts and ship with light weight programs.</p>
 
-<pre class="codepen" data-height="300" data-type="js" data-href="hkjfy" data-user="nzjames" data-safe="true"><code>/**
- * 2012-11-28 - JRM
- * Simple namespace pattern
- * Seen all over and lifted from HTML5 Mobile Boilerplate
- * https://github.com/h5bp/mobile-boilerplate/blob/master/js/helper.js
- */
+<p>One of the standout features of the Pi is it’s ability to play 1080p video.  This naturally led hackers to tune Xbox Media Centre (XBMC) which was already working on linux to work on the Pi.  There are a few different distros over at http://wiki.xbmc.org/index.php?title=Raspberry_Pi I settled on Raspbmc mostly because of the name - shallow I know.</p>
 
-(function(document) {
+<p>XBMC supports Apple&#8217;s Airplay protocol and can be quite easily configured as a headless receiver to give and old stereo Airplay support.</p>
 
-    window.NS = window.NS || {};
+<p>First you need a Raspberry Pi and the minimum accessories to get it going: SD Card, Micro USB power cable, keyboard, monitor. If you&#8217;re lost already checkout <a href="http://raspberrypi.org">http://raspberrypi.org</a> to get started. Then a set of speakers and an iDevice.</p>
 
-    NS.resultNode = document.getElementById('result');
+<p>Follow the Raspbmc download and install instructions from <a href="http://www.raspbmc.com/download/">http://www.raspbmc.com/download/</a>  to install XBMC on to your SD Card.</p>
 
-    NS.fn1 = function () {
-        NS.resultNode.innerHTML = &quot;Hello Namespace&quot;;
-    };
+<p>Boot the Pi with the SD card, it takes a short while finishing the base install and updating.</p>
 
-})(document);
+<p>When the Pi has finished installing it will land you on a blue dashboard, using the keyboard to navigate, move to the right and select the System > Settings menu</p>
 
-NS.fn1();</code></pre>
+<ol>
+<li>From the System > Audio output, set the Audio output to Analog.</li>
+<li>From Services > AirPlay, Allow XBMC to receive AirPlay content.</li>
+</ol>
 
 
-<script async src="http://codepen.io/assets/embed/ei.js"></script>
+<p>From your iDevice launch an audio player, I&#8217;m using Soma FM&#8217;s player but Music or any other player will work too.</p>
 
+<p>If AirPlay is enabled on the Pi the apps on iPhone should display the AirPlay icon and you can select the “XBMC (raspbmc)” option and start streaming.</p>
+
+<p>You can leave the monitor and keyboard plugged in and even stream video from YouTube, but I think there is something cool about having the minimal pieces of the puzzel and using it just for audio.</p>
+
+<p>It should be possible to get this going wireless with a USB wifi dongle. This is next on my list.</p>
+
+<p>iTunes doesn&#8217;t seem to want to switch over to e XBMC but iPhones and iPads are working great. And thanks to the massive range of Apps like SomaFM, rdio, Soundcloud, etc. there doesn&#8217;t seem to be a limit on choice.</p>
+
+<p>Enjoy.</p>
+
+<p>J</p>
 </div>
 
 
@@ -139,21 +146,15 @@ NS.fn1();</code></pre>
   
 
 
-<time datetime="2012-12-15T18:31:00-05:00" pubdate data-updated="true">Dec 15<span>th</span>, 2012</time>
+<time datetime="2013-03-16T00:09:00-04:00" pubdate data-updated="true">Mar 16<span>th</span>, 2013</time>
       
-
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/frontend/'>Frontend</a>, <a class='category' href='/blog/categories/javascript/'>JavaScript</a>, <a class='category' href='/blog/categories/snippet/'>Snippet</a>
-  
-</span>
 
 
     </p>
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://nzjames.github.com/blog/2012/12/15/javascript-namespace-snippet/" data-via="" data-counturl="http://nzjames.github.com/blog/2012/12/15/javascript-namespace-snippet/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://nzjames.github.com/blog/2013/03/16/airplay-on-raspberry-pi/" data-via="" data-counturl="http://nzjames.github.com/blog/2013/03/16/airplay-on-raspberry-pi/" >Tweet</a>
   
   
   
@@ -162,10 +163,8 @@ NS.fn1();</code></pre>
     
     <p class="meta">
       
-        <a class="basic-alignment left" href="/blog/2012/12/15/my-luumin-development-environment/" title="Previous Post: My Luumin Development Environment">&laquo; My Luumin Development Environment</a>
+        <a class="basic-alignment left" href="/blog/2013/02/14/webstock-2013-day-1/" title="Previous Post: Webstock 2013 Day 1">&laquo; Webstock 2013 Day 1</a>
       
-      
-        <a class="basic-alignment right" href="/blog/2013/02/14/webstock-2013-day-1/" title="Next Post: Webstock 2013 Day 1">Webstock 2013 Day 1 &raquo;</a>
       
     </p>
   </footer>
