@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="{{ metadata.language }}">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{ title or metadata.title }}</title>
+  <meta name="description" content="{{ description or metadata.description }}">
+  <style>
+    @font-face {
+      font-family: 'Cartridge-Regular';
+      src: url('https://com-zeronode-fonts.fly.dev/Cartridge/Cartridge-Regular.woff2') format('woff2'),
+        url('https://com-zeronode-fonts.fly.dev/Cartridge/Cartridge-Regular.woff') format('woff');
+    }
+    @font-face {
+      font-family: 'Cartridge-Bold';
+      src: url('https://com-zeronode-fonts.fly.dev/Cartridge/Cartridge-Bold.woff2') format('woff2'),
+        url('https://com-zeronode-fonts.fly.dev/Cartridge/Cartridge-Bold.woff') format('woff');
+    }
+  </style>
+  <link rel="icon" href="nzjim.ico" sizes="any">
+  <link rel="icon" href="nzjim.svg" type="image/svg+xml">
+  <link rel="me" href="https://mastodon.nz/@nzjames">
+</head>
+
+<body>
+Base NJK
+ {{ content | safe }}
+
+</body>
+
+</html>

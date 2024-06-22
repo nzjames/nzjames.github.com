@@ -1,0 +1,21 @@
+{
+    "title": "James thinks out loud",
+    "url": "https://nzjames.com/",
+    "language": "en",
+    "description": "Thinking out loud mostly about web development",
+    "feed": {
+      "subtitle": "Thinking out loud mostly about web development.",
+      "filename": "feed.xml",
+      "path": "/feed/feed.xml",
+      "id": "https://nzjames.com/"
+    },
+    "jsonfeed": {
+      "path": "/feed/feed.json",
+      "url": "https://nzjames.com/feed/feed.json"
+    },
+    "author": {
+      "name": "nzjames",
+      "email": "@nzjames@mastodon.nz",
+      "url": "https://mastodon.nz/@nzjames"
+    }
+  }
