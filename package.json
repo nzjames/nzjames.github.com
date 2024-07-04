@@ -7,8 +7,8 @@
     "build": "npx @11ty/eleventy",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npx @11ty/eleventy --serve",
-    "deploy": "fly deploy -c fly-staging.toml",
-    "deploy:prod": "fly deploy -c fly.toml"
+    "deploy": "fly deploy -c fly-staging.toml --dns-checks=false",
+    "deploy:prod": "fly deploy -c fly.toml --dns-checks=false"
   },
   "repository": {
     "type": "git",
