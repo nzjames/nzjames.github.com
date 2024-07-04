@@ -6,7 +6,9 @@
   "scripts": {
     "build": "npx @11ty/eleventy",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npx @11ty/eleventy --serve"
+    "start": "npx @11ty/eleventy --serve",
+    "deploy": "fly deploy -c fly-staging.toml",
+    "deploy:prod": "fly deploy -c fly.toml"
   },
   "repository": {
     "type": "git",
