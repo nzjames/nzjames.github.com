@@ -1,8 +1,8 @@
 export default {
-	title: "nzjames.com",
+	title: "james thinks out loud",
 	url: "https://nzjames.com/",
 	language: "en",
-	description: "Brings some talent sometimes.",
+	description: "James thinks out loud",
 	author: {
 		name: "James Magness",
 		email: "hello@nzjames.com",
