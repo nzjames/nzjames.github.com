@@ -55,7 +55,7 @@ export default async function(eleventyConfig) {
 		},
 		metadata: {
 			language: "en",
-			title: "nzjames.com",
+			title: "James Thinks Out Loud",
 			subtitle: "James thinks out loud",
 			base: "https://nzjames.com/",
 			author: {

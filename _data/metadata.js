@@ -1,11 +1,11 @@
 export default {
-	title: "james thinks out loud",
+	title: "James Thinks Out Loud",
 	url: "https://nzjames.com/",
 	language: "en",
 	description: "James thinks out loud",
 	author: {
 		name: "James Magness",
-		email: "hello@nzjames.com",
+		email: "",
 		url: "https://nzjames.com/about-me/"
 	}
 }
