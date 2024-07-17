@@ -1,7 +1,7 @@
 ---
 eleventyNavigation:
   key: About
-  order: 4
+  order: 3
 ---
 # About
 

@@ -45,13 +45,9 @@ export default async function(eleventyConfig) {
 		outputPath: "/feed/feed.xml",
 		stylesheet: "pretty-atom-feed.xsl",
 		templateData: {
-			eleventyNavigation: {
-				key: "Feed",
-				order: 4
-			}
 		},
 		collection: {
-			name: "posts",
+			name: "home",
 			limit: 10,
 		},
 		metadata: {
@@ -64,6 +60,46 @@ export default async function(eleventyConfig) {
 			}
 		}
 	});
+		// Atom Feed
+		eleventyConfig.addPlugin(feedPlugin, {
+			outputPath: "/feed/posts.xml",
+			stylesheet: "pretty-atom-feed.xsl",
+			templateData: {
+			},
+			collection: {
+				name: "posts",
+				limit: 20,
+			},
+			metadata: {
+				language: "en",
+				title: "James Thinks Out Loud - Posts",
+				subtitle: "James thinks out loud - posts",
+				base: siteUrl,
+				author: {
+					name: "James Magness"
+				}
+			}
+		});
+		// Atom Feed
+		eleventyConfig.addPlugin(feedPlugin, {
+			outputPath: "/feed/thoughts.xml",
+			stylesheet: "pretty-atom-feed.xsl",
+			templateData: {
+			},
+			collection: {
+				name: "thoughts",
+				limit: 20,
+			},
+			metadata: {
+				language: "en",
+				title: "James Thinks Out Loud - Thoughts",
+				subtitle: "James thinks out loud - thoughts",
+				base: siteUrl,
+				author: {
+					name: "James Magness"
+				}
+			}
+		});
 
 	// Image optimization: https://www.11ty.dev/docs/plugins/image/#eleventy-transform
 	eleventyConfig.addPlugin(eleventyImageTransformPlugin, {
