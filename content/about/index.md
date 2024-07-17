@@ -5,4 +5,8 @@ eleventyNavigation:
 ---
 # About
 
-I am a person that writes stuff.
+James thinks out loud. Modern social media is a dumpster fire. Own your own content.
+
+* [https://nzjames.com](https://nzjames.com)
+* [https://mastodon.nz/@nzjames](https://mastodon.nz/@nzjames)
+* [https://www.linkedin.com/in/james-magness/](https://www.linkedin.com/in/james-magness/)
