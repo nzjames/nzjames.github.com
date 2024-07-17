@@ -1,6 +1,8 @@
+import { siteUrl } from "../config.js"
+
 export default {
 	title: "James Thinks Out Loud",
-	url: "https://nzjames.com/",
+	url: siteUrl,
 	language: "en",
 	description: "James thinks out loud",
 	author: {

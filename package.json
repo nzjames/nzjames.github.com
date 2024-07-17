@@ -5,15 +5,13 @@
 	"type": "module",
 	"scripts": {
 		"build": "npm run clean; npx @11ty/eleventy",
-		"build-ghpages": "npx @11ty/eleventy --pathprefix=/eleventy-base-blog/",
 		"clean": "rm -rf ./_site",
 		"start": "npx @11ty/eleventy --serve --quiet",
-		"start-ghpages": "npx @11ty/eleventy --pathprefix=/eleventy-base-blog/ --serve --quiet",
 		"debug": "DEBUG=Eleventy* npx @11ty/eleventy",
 		"debugstart": "DEBUG=Eleventy* npx @11ty/eleventy --serve --quiet",
 		"benchmark": "DEBUG=Eleventy:Benchmark* npx @11ty/eleventy",
-		"deploy": "fly deploy -c fly-staging.toml --dns-checks=false",
-    "deploy:prod": "fly deploy -c fly.toml --dns-checks=false"
+		"deploy": "STAGE=staging npm run build; fly deploy -c fly-staging.toml --dns-checks=false",
+    "deploy:prod": "STAGE=production npm run build; fly deploy -c fly.toml --dns-checks=false"
 	},
 	"repository": {
 		"type": "git",
