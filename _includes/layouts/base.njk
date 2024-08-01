@@ -30,6 +30,7 @@
 
 {%- if theme === 'glitch' %}
 		<!-- START GLITCHING -->
+		  {%- css %}
 				html {
 			--background-color: #111 !important;
 		}
@@ -55,6 +56,7 @@
 
 			header {
 			}
+		  {% endcss %}
 		<!-- GLITCHED -->
 		{% endif %}
 
