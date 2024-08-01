@@ -1,3 +1,4 @@
+// Run using `npx @11ty/eleventy --config=glitch.eleventy.config.js` until we figure out what is wrong with the npm script invocation
 import markdownItAnchor from "markdown-it-anchor";
 
 import { InputPathToUrlTransformPlugin, HtmlBasePlugin } from "@11ty/eleventy";
@@ -7,7 +8,6 @@ import pluginNavigation from "@11ty/eleventy-navigation";
 import { eleventyImageTransformPlugin } from "@11ty/eleventy-img";
 
 import pluginFilters from "./_config/filters.js";
-import { siteUrl } from './config.js';
 
 /** @param {import("@11ty/eleventy").UserConfig} eleventyConfig */
 export default async function(eleventyConfig) {
@@ -41,82 +41,82 @@ export default async function(eleventyConfig) {
 	eleventyConfig.addPlugin(InputPathToUrlTransformPlugin);
 
 	// Atom Feed
-	eleventyConfig.addPlugin(feedPlugin, {
-		outputPath: "/feed/feed.xml",
-		stylesheet: "pretty-atom-feed.xsl",
-		templateData: {
-		},
-		collection: {
-			name: "home",
-			limit: 10,
-		},
-		metadata: {
-			language: "en",
-			title: "James Thinks Out Loud",
-			subtitle: "James thinks out loud",
-			base: siteUrl,
-			author: {
-				name: "James Magness"
-			}
-		}
-	});
+	// eleventyConfig.addPlugin(feedPlugin, {
+	// 	outputPath: "/feed/feed.xml",
+	// 	stylesheet: "pretty-atom-feed.xsl",
+	// 	templateData: {
+	// 	},
+	// 	collection: {
+	// 		name: "home",
+	// 		limit: 10,
+	// 	},
+	// 	metadata: {
+	// 		language: "en",
+	// 		title: "James Thinks Out Loud",
+	// 		subtitle: "James thinks out loud",
+	// 		base: siteUrl,
+	// 		author: {
+	// 			name: "James Magness"
+	// 		}
+	// 	}
+	// });
 		// Atom Feed
-		eleventyConfig.addPlugin(feedPlugin, {
-			outputPath: "/feed/posts.xml",
-			stylesheet: "pretty-atom-feed.xsl",
-			templateData: {
-			},
-			collection: {
-				name: "posts",
-				limit: 20,
-			},
-			metadata: {
-				language: "en",
-				title: "James Thinks Out Loud - Posts",
-				subtitle: "James thinks out loud - posts",
-				base: siteUrl,
-				author: {
-					name: "James Magness"
-				}
-			}
-		});
+		// eleventyConfig.addPlugin(feedPlugin, {
+		// 	outputPath: "/feed/posts.xml",
+		// 	stylesheet: "pretty-atom-feed.xsl",
+		// 	templateData: {
+		// 	},
+		// 	collection: {
+		// 		name: "posts",
+		// 		limit: 20,
+		// 	},
+		// 	metadata: {
+		// 		language: "en",
+		// 		title: "James Thinks Out Loud - Posts",
+		// 		subtitle: "James thinks out loud - posts",
+		// 		base: siteUrl,
+		// 		author: {
+		// 			name: "James Magness"
+		// 		}
+		// 	}
+		// });
 		// Atom Feed
-		eleventyConfig.addPlugin(feedPlugin, {
-			outputPath: "/feed/thoughts.xml",
-			stylesheet: "pretty-atom-feed.xsl",
-			templateData: {
-			},
-			collection: {
-				name: "thoughts",
-				limit: 20,
-			},
-			metadata: {
-				language: "en",
-				title: "James Thinks Out Loud - Thoughts",
-				subtitle: "James thinks out loud - thoughts",
-				base: siteUrl,
-				author: {
-					name: "James Magness"
-				}
-			}
-		});
+		// eleventyConfig.addPlugin(feedPlugin, {
+		// 	outputPath: "/feed/thoughts.xml",
+		// 	stylesheet: "pretty-atom-feed.xsl",
+		// 	templateData: {
+		// 	},
+		// 	collection: {
+		// 		name: "thoughts",
+		// 		limit: 20,
+		// 	},
+		// 	metadata: {
+		// 		language: "en",
+		// 		title: "James Thinks Out Loud - Thoughts",
+		// 		subtitle: "James thinks out loud - thoughts",
+		// 		base: siteUrl,
+		// 		author: {
+		// 			name: "James Magness"
+		// 		}
+		// 	}
+		// });
 
 	// Image optimization: https://www.11ty.dev/docs/plugins/image/#eleventy-transform
-	eleventyConfig.addPlugin(eleventyImageTransformPlugin, {
-		// File extensions to process in _site folder
-		extensions: "html",
+	// eleventyConfig.addPlugin(eleventyImageTransformPlugin, {
+	// 	// File extensions to process in _site folder
+	// 	extensions: "html",
 
-		// Output formats for each image.
-		formats: ["avif", "webp", "auto"],
+	// 	// Output formats for each image.
+	// 	formats: ["avif", "webp", "auto"],
 
-		// widths: ["auto"],
+	// 	// widths: ["auto"],
 
-		defaultAttributes: {
-			// e.g. <img loading decoding> assigned on the HTML tag will override these values.
-			loading: "lazy",
-			decoding: "async",
-		}
-	});
+	// 	defaultAttributes: {
+	// 		// e.g. <img loading decoding> assigned on the HTML tag will override these values.
+	// 		loading: "lazy",
+	// 		decoding: "async",
+	// 	}
+	// });
 
 	// Filters
 	eleventyConfig.addPlugin(pluginFilters);
@@ -139,8 +139,6 @@ export default async function(eleventyConfig) {
 		return (new Date()).toISOString();
 	});
 
-	eleventyConfig.addGlobalData("theme", "default");
-
 	// Features to make your build faster (when you need them)
 
 	// If your passthrough copy gets heavy and cumbersome, add this line
@@ -149,6 +147,7 @@ export default async function(eleventyConfig) {
 
 	// eleventyConfig.setServerPassthroughCopyBehavior("passthrough");
 
+eleventyConfig.addGlobalData("theme", "glitch");
 
 eleventyConfig.addCollection("home", function (collectionApi) {
 	return collectionApi.getFilteredByGlob(["content/posts/*", "content/thoughts/*"]);
@@ -157,6 +156,7 @@ eleventyConfig.addCollection("home", function (collectionApi) {
 
 
 };
+
 
 export const config = {
 	// Control which files Eleventy will process
@@ -180,7 +180,7 @@ export const config = {
 		input: "content",          // default: "."
 		includes: "../_includes",  // default: "_includes" (`input` relative)
 		data: "../_data",          // default: "_data" (`input` relative)
-		output: "_site"
+		output: "_glitch"
 	},
 
 	// -----------------------------------------------------------------

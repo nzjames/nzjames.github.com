@@ -1,0 +1,28 @@
+/*
+ currently unused, but maybe the pref place to put htis content (currently working inline base.njk)
+*/
+html {
+	--background-color: #111 !important;
+}
+body {
+	position: relative;
+	max-width: 100vw;
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+}
+body	* {
+		position: absolute;
+		width: 100vw;
+		top: 0;
+		margin: 0;
+		font-size: 2em;
+		color: magenta;
+		background: rgb(255, 255, 255, .05);
+		}
+
+		a { color: cyan !important;}
+		footer {display: none;}
+
+	header {
+	}
