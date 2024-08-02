@@ -1,0 +1,19 @@
+---
+permalink: /glitch.json
+layout: false
+eleventyExcludeFromCollections: true
+---
+{%- if theme === 'glitch' %}
+{{ glitchMap}}
+{
+	"posts": [
+{%- for page in collections.posts %}{% set absoluteUrl %}{{ page.url | htmlBaseUrl(metadata.url) }}{% endset %}
+		{
+			"title": "{{ page.data.title}}",
+			"pageUrl": "{{ page.url }}"
+		}{% if not loop.last %},{% endif %}
+{%- endfor %}
+	]
+}
+{% endif %}
+

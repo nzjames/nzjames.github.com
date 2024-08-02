@@ -10,13 +10,19 @@ import { eleventyImageTransformPlugin } from "@11ty/eleventy-img";
 import pluginFilters from "./_config/filters.js";
 
 /** @param {import("@11ty/eleventy").UserConfig} eleventyConfig */
-export default async function(eleventyConfig) {
+export default async function (eleventyConfig) {
+	eleventyConfig.setServerOptions({
+		port: 8099,
+	});
+
 	// Copy the contents of the `public` folder to the output folder
 	// For example, `./public/css/` ends up in `_site/css/`
 	eleventyConfig
 		.addPassthroughCopy({
 			"./public/": "/",
-			"./node_modules/prismjs/themes/prism-okaidia.css": "/css/prism-okaidia.css"
+			"./node_modules/prismjs/themes/prism-okaidia.css":
+				"/css/prism-okaidia.css",
+			"./glitch/": "/",
 		})
 		.addPassthroughCopy("./content/feed/pretty-atom-feed.xsl");
 
@@ -34,95 +40,17 @@ export default async function(eleventyConfig) {
 
 	// Official plugins
 	eleventyConfig.addPlugin(pluginSyntaxHighlight, {
-		preAttributes: { tabindex: 0 }
+		preAttributes: { tabindex: 0 },
 	});
 	eleventyConfig.addPlugin(pluginNavigation);
 	eleventyConfig.addPlugin(HtmlBasePlugin);
 	eleventyConfig.addPlugin(InputPathToUrlTransformPlugin);
 
-	// Atom Feed
-	// eleventyConfig.addPlugin(feedPlugin, {
-	// 	outputPath: "/feed/feed.xml",
-	// 	stylesheet: "pretty-atom-feed.xsl",
-	// 	templateData: {
-	// 	},
-	// 	collection: {
-	// 		name: "home",
-	// 		limit: 10,
-	// 	},
-	// 	metadata: {
-	// 		language: "en",
-	// 		title: "James Thinks Out Loud",
-	// 		subtitle: "James thinks out loud",
-	// 		base: siteUrl,
-	// 		author: {
-	// 			name: "James Magness"
-	// 		}
-	// 	}
-	// });
-		// Atom Feed
-		// eleventyConfig.addPlugin(feedPlugin, {
-		// 	outputPath: "/feed/posts.xml",
-		// 	stylesheet: "pretty-atom-feed.xsl",
-		// 	templateData: {
-		// 	},
-		// 	collection: {
-		// 		name: "posts",
-		// 		limit: 20,
-		// 	},
-		// 	metadata: {
-		// 		language: "en",
-		// 		title: "James Thinks Out Loud - Posts",
-		// 		subtitle: "James thinks out loud - posts",
-		// 		base: siteUrl,
-		// 		author: {
-		// 			name: "James Magness"
-		// 		}
-		// 	}
-		// });
-		// Atom Feed
-		// eleventyConfig.addPlugin(feedPlugin, {
-		// 	outputPath: "/feed/thoughts.xml",
-		// 	stylesheet: "pretty-atom-feed.xsl",
-		// 	templateData: {
-		// 	},
-		// 	collection: {
-		// 		name: "thoughts",
-		// 		limit: 20,
-		// 	},
-		// 	metadata: {
-		// 		language: "en",
-		// 		title: "James Thinks Out Loud - Thoughts",
-		// 		subtitle: "James thinks out loud - thoughts",
-		// 		base: siteUrl,
-		// 		author: {
-		// 			name: "James Magness"
-		// 		}
-		// 	}
-		// });
-
-	// Image optimization: https://www.11ty.dev/docs/plugins/image/#eleventy-transform
-	// eleventyConfig.addPlugin(eleventyImageTransformPlugin, {
-	// 	// File extensions to process in _site folder
-	// 	extensions: "html",
-
-	// 	// Output formats for each image.
-	// 	formats: ["avif", "webp", "auto"],
-
-	// 	// widths: ["auto"],
-
-	// 	defaultAttributes: {
-	// 		// e.g. <img loading decoding> assigned on the HTML tag will override these values.
-	// 		loading: "lazy",
-	// 		decoding: "async",
-	// 	}
-	// });
-
 	// Filters
 	eleventyConfig.addPlugin(pluginFilters);
 
 	// Customize Markdown library settings:
-	eleventyConfig.amendLibrary("md", mdLib => {
+	eleventyConfig.amendLibrary("md", (mdLib) => {
 		mdLib.use(markdownItAnchor, {
 			permalink: markdownItAnchor.permalink.ariaHidden({
 				placement: "after",
@@ -130,15 +58,24 @@ export default async function(eleventyConfig) {
 				symbol: "#",
 				ariaHidden: false,
 			}),
-			level: [1,2,3,4],
-			slugify: eleventyConfig.getFilter("slugify")
+			level: [1, 2, 3, 4],
+			slugify: eleventyConfig.getFilter("slugify"),
 		});
 	});
 
-	eleventyConfig.addShortcode("currentBuildDate", () => {
-		return (new Date()).toISOString();
+	eleventyConfig.addFilter("stringify", (data) => {
+		return JSON.stringify(data, null, "\t");
 	});
 
+	eleventyConfig.addShortcode("currentBuildDate", () => {
+		return new Date().toISOString();
+	});
+
+	eleventyConfig.addShortcode("glitchMap", (context) => {
+		console.log(context);
+		debugger;
+		return new Date().toISOString();
+	});
 	// Features to make your build faster (when you need them)
 
 	// If your passthrough copy gets heavy and cumbersome, add this line
@@ -147,27 +84,20 @@ export default async function(eleventyConfig) {
 
 	// eleventyConfig.setServerPassthroughCopyBehavior("passthrough");
 
-eleventyConfig.addGlobalData("theme", "glitch");
+	eleventyConfig.addGlobalData("theme", "glitch");
 
-eleventyConfig.addCollection("home", function (collectionApi) {
-	return collectionApi.getFilteredByGlob(["content/posts/*", "content/thoughts/*"]);
-});
-
-
-
-};
-
+	eleventyConfig.addCollection("home", function (collectionApi) {
+		return collectionApi.getFilteredByGlob([
+			"content/posts/*",
+			"content/thoughts/*",
+		]);
+	});
+}
 
 export const config = {
 	// Control which files Eleventy will process
 	// e.g.: *.md, *.njk, *.html, *.liquid
-	templateFormats: [
-		"md",
-		"njk",
-		"html",
-		"liquid",
-		"11ty.js",
-	],
+	templateFormats: ["md", "njk", "html", "liquid", "11ty.js"],
 
 	// Pre-process *.md files with: (default: `liquid`)
 	markdownTemplateEngine: "njk",
@@ -177,10 +107,10 @@ export const config = {
 
 	// These are all optional:
 	dir: {
-		input: "content",          // default: "."
-		includes: "../_includes",  // default: "_includes" (`input` relative)
-		data: "../_data",          // default: "_data" (`input` relative)
-		output: "_glitch"
+		input: "content", // default: "."
+		includes: "../_includes", // default: "_includes" (`input` relative)
+		data: "../_data", // default: "_data" (`input` relative)
+		output: "_glitch",
 	},
 
 	// -----------------------------------------------------------------

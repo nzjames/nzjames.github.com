@@ -7,6 +7,7 @@
 		"build": "npm run clean; npx @11ty/eleventy",
 		"clean": "rm -rf ./_site",
 		"start": "npx @11ty/eleventy --serve --quiet",
+		"start:glitch": "npx @11ty/eleventy --serve --quiet --config=glitch.eleventy.config.js",
 		"debug": "DEBUG=Eleventy* npx @11ty/eleventy",
 		"debugstart": "DEBUG=Eleventy* npx @11ty/eleventy --serve --quiet",
 		"benchmark": "DEBUG=Eleventy:Benchmark* npx @11ty/eleventy",
