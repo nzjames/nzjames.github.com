@@ -5,3 +5,4 @@ package-lock.json
 _glitch
 
 .DS_Store
+test-results

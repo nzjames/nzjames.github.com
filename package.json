@@ -12,7 +12,7 @@
 		"debugstart": "DEBUG=Eleventy* npx @11ty/eleventy --serve --quiet",
 		"benchmark": "DEBUG=Eleventy:Benchmark* npx @11ty/eleventy",
 		"deploy": "STAGE=staging npm run build; fly deploy -c fly-staging.toml --dns-checks=false",
-    "deploy:prod": "STAGE=production npm run build; fly deploy -c fly.toml --dns-checks=false"
+		"deploy:prod": "STAGE=production npm run build; fly deploy -c fly.toml --dns-checks=false"
 	},
 	"repository": {
 		"type": "git",
@@ -47,6 +47,7 @@
 		"zod-validation-error": "^3.3.0"
 	},
 	"dependencies": {
+		"@playwright/test": "^1.45.3",
 		"sharp": "^0.33.4"
 	}
 }
