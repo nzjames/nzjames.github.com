@@ -78,6 +78,7 @@ function onFrame(event) {
 		raster.remove();
 		// generate svg and make available as the payload for the link
 		// before text is added ( i think )
+
 		var svg = document.bang.exportSVG({
 			asString: true,
 		});
@@ -87,18 +88,9 @@ function onFrame(event) {
 		done = true;
 		console.log(exportSVGLink.href);
 
-		// render heading/title (it works but no wrap yet)
 
-	// 	var text = new PointText({
-	// 		point: [50, 50],
-	// 		content: 'The contents of the point text',
-	// 		fillColor: 'black',
-	// 		fontFamily: 'Cartridge-Regular',
-	// 		fontSize:   '7vw'
-	// });
-
-		// export png and add link
-
+		// PNG is currently done at html layer cause this has the working text wrapping and
+		// working PNG generation
 
 		return;
 	} else {
