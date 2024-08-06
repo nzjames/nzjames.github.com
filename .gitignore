@@ -6,3 +6,5 @@ _glitch
 
 .DS_Store
 test-results
+_glitch.bak
+public/img/banner/*

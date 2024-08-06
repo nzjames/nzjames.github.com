@@ -1,7 +1,7 @@
 ---
-title: When is software done?
+title: When is software broken
 description:
-date: 2022-09-01
+date: 2021-09-01
 tags:
   -
 ---
