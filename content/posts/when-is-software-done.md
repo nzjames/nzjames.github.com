@@ -1,5 +1,6 @@
 ---
 title: When is software done?
+permalink: "/{{ title | slugify }}/"
 description:
 date: 2022-09-01
 tags:

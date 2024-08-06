@@ -86,7 +86,7 @@ function onFrame(event) {
 		var url = URL.createObjectURL(blob);
 		document.getElementById("downloadSVG").href = url;
 		done = true;
-		console.log(exportSVGLink.href);
+		//nconsole.log(exportSVGLink.href);
 
 
 		// PNG is currently done at html layer cause this has the working text wrapping and
@@ -131,6 +131,4 @@ function exportSVG() {
 	document.getElementById("downloadSVG").href = url;
 }
 
-document.exportSVG = exportSVG;
-
-document.getElementById("exportSVG").addEventListener("click", exportSVG);
+//document.exportSVG = exportSVG;
