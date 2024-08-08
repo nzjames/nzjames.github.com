@@ -4,7 +4,12 @@ layout: layouts/base.njk
 {# Only include the syntax highlighter CSS on blog posts #}
 {%- css %}{% include "node_modules/prismjs/themes/prism-okaidia.css" %}{% endcss %}
 {%- css %}{% include "public/css/prism-diff.css" %}{%- endcss %}
+{%- css %}{% include "public/css/post.css" %}{%- endcss %}
+
+<img class="post-hero" src="./img/banner/{{  title | slugify }}.svg" alt="{{ title}}" style="" />
 <h1>{{ title }}</h1>
+
+ {# {% svgIcon 'posts', title | slugify  %} #}
 
 <ul class="post-metadata">
 	<li><time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate }}</time></li>

@@ -8,7 +8,7 @@ numberOfLatestPostsToShow: 10
 
 {% set postslist = collections.home | head(-1 * numberOfLatestPostsToShow) %}
 {% set postslistCounter = postsCount %}
-{% include "postslist.njk" %}
+{% include "homelist.njk" %}
 
 {% set morePosts = postsCount - numberOfLatestPostsToShow %}
 {% if morePosts > 0 %}

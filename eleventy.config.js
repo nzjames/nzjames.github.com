@@ -4,7 +4,7 @@ import { InputPathToUrlTransformPlugin, HtmlBasePlugin } from "@11ty/eleventy";
 import { feedPlugin } from "@11ty/eleventy-plugin-rss";
 import pluginSyntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
 import pluginNavigation from "@11ty/eleventy-navigation";
-import { eleventyImageTransformPlugin } from "@11ty/eleventy-img";
+import { Image, eleventyImageTransformPlugin } from "@11ty/eleventy-img";
 
 import pluginFilters from "./_config/filters.js";
 import { siteUrl } from './config.js';
@@ -107,9 +107,11 @@ export default async function(eleventyConfig) {
 		extensions: "html",
 
 		// Output formats for each image.
-		formats: ["avif", "webp", "auto"],
+		formats: ["avif", "webp", "auto", "svg"],
 
 		// widths: ["auto"],
+		svgShortCircuit: true,
+
 
 		defaultAttributes: {
 			// e.g. <img loading decoding> assigned on the HTML tag will override these values.
@@ -117,6 +119,20 @@ export default async function(eleventyConfig) {
 			decoding: "async",
 		}
 	});
+
+
+	eleventyConfig.addNunjucksAsyncShortcode("svgIcon", async (path, fileName) => {
+		  // const fullPath = `file:${process.cwd()}/content/posts/img/banner/${fileName}.svg`;
+		  const fullPath = `./content/posts/img/banner/${fileName}.svg`;
+		  console.log(fullPath);
+    const metadata = await new Image(fullPath, {
+      formats: ["svg"],
+      dryRun: true,
+    })
+		console.log(metadata.svg);
+			 return 'foo';
+			return data;
+  });
 
 	// Filters
 	eleventyConfig.addPlugin(pluginFilters);

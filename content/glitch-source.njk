@@ -10,7 +10,7 @@ eleventyExcludeFromCollections: true
 {%- for page in collections.posts %}{% set absoluteUrl %}{{ page.url | htmlBaseUrl(metadata.url) }}{% endset %}
 		{
 			"title": "{{ page.data.title}}",
-			"fileName": "post-{{  page.data.title | slugify }}",
+			"fileName": "{{  page.data.title | slugify }}",
 			"pageUrl": "{{ page.url }}"
 		}{% if not loop.last %},{% endif %}
 {%- endfor %}

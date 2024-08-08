@@ -40,13 +40,13 @@ test("crawl glitch posts", async ({ request, page }) => {
 		await page.getByText("Download PNG").click();
 		const download = await downloadPromise;
 		// Wait for the download process to complete and save the downloaded file somewhere.
-		await download.saveAs("public/img/banner/" + download.suggestedFilename());
+		await download.saveAs("content/posts/img/banner/" + download.suggestedFilename());
 
 		// Start waiting for download before clicking. Note no await.
 		const downloadPromiseSVG = page.waitForEvent("download");
 		await page.getByText("Download SVG").click({ timeout: 50000 });
 		const downloadSVG = await downloadPromiseSVG;
 		// Wait for the download process to complete and save the downloaded file somewhere.
-		await downloadSVG.saveAs("public/img/banner/" + downloadSVG.suggestedFilename());
+		await downloadSVG.saveAs("content/posts/img/banner/" + downloadSVG.suggestedFilename());
 	}
 });

@@ -1,0 +1,24 @@
+.post-hero {
+	max-width: 100%;
+	width:38em;
+	height:7em;
+object-fit: cover;
+}
+
+.postlist .postlist-item {
+	display: flex;
+	align-items: center;
+	counter-increment: start-from -1;
+	margin-bottom: 1em;
+	flex-wrap: unset;
+}
+
+.postlist .postlist-link {
+	flex-basis: unset;
+}
+
+.postlist-item img {
+	width: 12em;
+	height: auto;
+	border-radius: 5px;
+}

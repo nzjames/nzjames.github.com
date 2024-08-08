@@ -33,7 +33,7 @@
 			canvas="myCanvas"
 			src="glitch-paper.js"
 		></script>
-	</head>
+	<script type="module" integrity="sha512-sbyrbb5ihjFEtruOg4BYo+ch6mvFXXJjqN/jRqyNhTTX6U7P1hewyscdmCRbBcZpU1AZcLxofnKo9QvJj9Y4RQ==" src="/.11ty/reload-client.js"></script></head>
 	<body>
 		<h1>ok how we doing?</h1>
 		<canvas id="myCanvas" resize style="width: 1200px; height: 675px"></canvas>
