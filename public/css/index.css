@@ -54,6 +54,7 @@ html {
 }
 body {
 	max-width: 40em;
+	font-size: 1.2rem;
 }
 
 /* https://www.a11yproject.com/posts/how-to-hide-content/ */
