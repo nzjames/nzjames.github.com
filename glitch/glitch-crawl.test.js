@@ -53,5 +53,5 @@ test("crawl glitch posts", async ({ request, page }) => {
 		const item = testData.posts[i];
 		await renderAndShoot(page, item);
 	}
-	await renderAndShoot(page, testData.posts[0]);
+	//await renderAndShoot(page, testData.posts[0]);
 });

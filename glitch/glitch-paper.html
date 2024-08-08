@@ -41,7 +41,7 @@
 			<!-- wired in glitch-paper.js -->
 			<a href="#" id="downloadSVG" download>Download SVG</a>
 			<!-- wired in below after text rendering -->
-			<a href="#" id="downloadPNG" download>Download PNG</a>
+			<a href="#" id="downloadPNG" download></a>
 		</div>
 		<script>
 			urlParams = new URLSearchParams(window.location.search);
@@ -72,7 +72,10 @@
 					ctx.fillStyle = "#d748d7";
 					ctx.fillText(item[0], item[1], item[2]);
 				});
-				exportPNG();
+				setTimeout(()=>{
+					exportPNG();
+				}, 100);
+
 			}
 
 			// @description: wrapText wraps HTML canvas text onto a canvas of fixed width
@@ -132,6 +135,7 @@
 					const url = URL.createObjectURL(blob);
 					document.getElementById("downloadPNG").href = url;
 				}, "image/png");
+				document.getElementById("downloadPNG").innerHTML = `Download PNG`;
 			};
 		</script>
 	</body>
