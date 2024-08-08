@@ -5,16 +5,9 @@ import { test, expect } from "@playwright/test";
 
 const host = "http://localhost";
 const port = "8099";
+const glitchPaperUrl = `${host}:${port}/glitch-paper.html`;
 
-test("crawl glitch posts", async ({ request, page }) => {
-	const glitchPaperUrl = `${host}:${port}/glitch-paper.html`;
-	const dataUrl = `${host}:${port}/glitch.json`;
-	const testData = await (await request.get(dataUrl)).json();
-
-	console.log(testData);
-
-	for (let i = 0; i < testData.posts.length; i += 1) {
-		const item = testData.posts[i];
+const renderAndShoot = async (page, item) => {
 		const url = `${host}:${port}${item.pageUrl}`;
 		console.log(url);
 		await page.goto(url);
@@ -48,5 +41,17 @@ test("crawl glitch posts", async ({ request, page }) => {
 		const downloadSVG = await downloadPromiseSVG;
 		// Wait for the download process to complete and save the downloaded file somewhere.
 		await downloadSVG.saveAs("content/posts/img/banner/" + downloadSVG.suggestedFilename());
+
+}
+
+test("crawl glitch posts", async ({ request, page }) => {
+	const dataUrl = `${host}:${port}/glitch.json`;
+	const testData = await (await request.get(dataUrl)).json();
+
+
+	for (let i = 0; i < testData.posts.length; i += 1) {
+		const item = testData.posts[i];
+		await renderAndShoot(page, item);
 	}
+	await renderAndShoot(page, testData.posts[0]);
 });
