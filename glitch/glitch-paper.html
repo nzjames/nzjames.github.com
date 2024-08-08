@@ -46,6 +46,8 @@
 		<script>
 			urlParams = new URLSearchParams(window.location.search);
 			downloadFileName = urlParams.get("fileName") || "banner";
+			title = urlParams.get("title") || "";
+
 
 			document.getElementById("downloadPNG").download = `${downloadFileName}.png`;
 			document.getElementById("downloadSVG").download = `${downloadFileName}.svg`;
@@ -69,7 +71,7 @@
 					ctx.fill();
 					console.log(...item, ctx.measureText(item[0]));
 					ctx.fillStyle = "#fff";
-					ctx.fillStyle = "#d748d7";
+					//ctx.fillStyle = "#d748d7";
 					ctx.fillText(item[0], item[1], item[2]);
 				});
 				setTimeout(()=>{
