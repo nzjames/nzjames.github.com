@@ -64,6 +64,7 @@ function handleImage(image) {
 
 		// Transform the group so it covers the view:
 		group.fitBounds(view.bounds, true);
+		//group.scale(1.8);
 		group.scale(1.1);
 	});
 }
@@ -78,6 +79,7 @@ function onFrame(event) {
 		raster.remove();
 		// generate svg and make available as the payload for the link
 		// before text is added ( i think )
+		group.scale(1.1);
 
 		var svg = document.bang.exportSVG({
 			asString: true,
@@ -86,6 +88,7 @@ function onFrame(event) {
 		var url = URL.createObjectURL(blob);
 		document.getElementById("downloadSVG").href = url;
 		done = true;
+		group.scale(2.03);
 		//nconsole.log(exportSVGLink.href);
 
 
