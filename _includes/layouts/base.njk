@@ -11,7 +11,17 @@
 		<link rel="alternate" href="feed/json.njk" type="application/json" title="{{ metadata.title }}">
 
 		{#- Uncomment this if you’d like folks to know that you used Eleventy to build your site!  #}
-		{#- <meta name="generator" content="{{ eleventy.generator }}"> #}
+		<meta name="generator" content="{{ eleventy.generator }}">
+		<style>
+			@font-face {
+				font-family: 'Cartridge-Regular';
+				src: url("https://com-zeronode-fonts.fly.dev/Cartridge/Cartridge-Regular.woff2") format('woff2'), url("https://com-zeronode-fonts.fly.dev/Cartridge/Cartridge-Regular.woff") format('woff');
+			}
+			@font-face {
+				font-family: 'Cartridge-Bold';
+				src: url("https://com-zeronode-fonts.fly.dev/Cartridge/Cartridge-Bold.woff2") format('woff2'), url("https://com-zeronode-fonts.fly.dev/Cartridge/Cartridge-Bold.woff") format('woff');
+			}
+		</style>
 
 		{#-
 		CSS bundles are provided via the `eleventy-plugin-bundle` plugin:
@@ -28,9 +38,11 @@
 		{#- Or add from node_modules #}
 		{# {%- css %}{% include "node_modules/prismjs/themes/prism-okaidia.css" %}{% endcss %} #}
 
-{%- if theme === 'glitch' %}
-		<!-- START GLITCHING -->
-		  {%- css %}
+
+
+		{%- if theme === 'glitch' %}
+			<!-- START GLITCHING -->
+			{%- css %}
 				html {
 			--background-color: #111 !important;
 		}
@@ -57,13 +69,11 @@
 			header {
 			}
 		  {% endcss %}
-		<!-- GLITCHED -->
+			<!-- GLITCHED -->
 		{% endif %}
 
+		<link rel="stylesheet" href="{% getBundleFileUrl "css" %}">
 
-
-		{#- Render the CSS bundle using Inlined CSS (for the fastest site performance in production) #}
-		<style>{% getBundle "css" %}</style>
 		{#- Renders the CSS bundle using a separate file, if you can't set CSP directive style-src: 'unsafe-inline' #}
 		{#- <link rel="stylesheet" href="{% getBundleFileUrl "css" %}"> #}
 	</head>
@@ -77,9 +87,11 @@
 			<nav>
 				<h2 class="visually-hidden">Top level navigation menu</h2>
 				<ul class="nav">
-				{%- for entry in collections.all | eleventyNavigation %}
-					<li class="nav-item"><a href="{{ entry.url }}"{% if entry.url == page.url %} aria-current="page"{% endif %}>{{ entry.title }}</a></li>
-				{%- endfor %}
+					{%- for entry in collections.all | eleventyNavigation %}
+						<li class="nav-item">
+							<a href="{{ entry.url }}"{% if entry.url == page.url %} aria-current="page"{% endif %}>{{ entry.title }}</a>
+						</li>
+					{%- endfor %}
 				</ul>
 			</nav>
 		</header>
@@ -89,7 +101,10 @@
 		</main>
 
 		<footer>
-			<p><em>Built with <a href="https://www.11ty.dev/">{{ eleventy.generator }}</a></em></p>
+			<p>
+				<em>Built with <a href="https://www.11ty.dev/">{{ eleventy.generator }}</a>
+				</em>
+			</p>
 		</footer>
 
 		<!-- This page `{{ page.url | htmlBaseUrl }}` was built on {% currentBuildDate %} -->
