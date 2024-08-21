@@ -6,28 +6,50 @@ layout: layouts/base.njk
 {%- css %}{% include "public/css/prism-diff.css" %}{%- endcss %}
 {%- css %}{% include "public/css/post.css" %}{%- endcss %}
 
-<img class="post-hero" src="./img/banner/{{  title | slugify }}.svg" alt="{{ title}}" style="" />
+{% svgIcon 'posts', title | slugify %}
+<script>
+	try {
+		const heroSVG = document.getElementsByTagName('svg')[0]
+		heroSVG.setAttribute('viewBox', '0,274,1200,218')
+		heroSVG.setAttribute('width', '100%');
+		heroSVG.setAttribute('height', '100%');
+	} catch (e) {
+		cosnole.log(e)
+	}
+</script>
+
 <h1>{{ title }}</h1>
 
- {# {% svgIcon 'posts', title | slugify  %} #}
-
 <ul class="post-metadata">
-	<li><time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate }}</time></li>
+	<li>
+		<time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate }}</time>
+	</li>
 	{%- for tag in tags | filterTagList %}
-	{%- set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
-	<li><a href="{{ tagUrl }}" class="post-tag">{{ tag }}</a>{%- if not loop.last %}, {% endif %}</li>
+		{%- set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
+		<li>
+			<a href="{{ tagUrl }}" class="post-tag">{{ tag }}</a>
+			{%- if not loop.last %}, {% endif %}
+		</li>
 	{%- endfor %}
 </ul>
 
 {{ content | safe }}
 
 {%- if collections.posts %}
-{%- set previousPost = collections.posts | getPreviousCollectionItem %}
-{%- set nextPost = collections.posts | getNextCollectionItem %}
-{%- if nextPost or previousPost %}
-<ul class="links-nextprev">
-	{%- if previousPost %}<li class="links-nextprev-prev">← Previous<br> <a href="{{ previousPost.url }}">{{ previousPost.data.title }}</a></li>{% endif %}
-	{%- if nextPost %}<li class="links-nextprev-next">Next →<br><a href="{{ nextPost.url }}">{{ nextPost.data.title }}</a></li>{% endif %}
-</ul>
-{%- endif %}
+	{%- set previousPost = collections.posts | getPreviousCollectionItem %}
+	{%- set nextPost = collections.posts | getNextCollectionItem %}
+	{%- if nextPost or previousPost %}
+		<ul class="links-nextprev">
+			{%- if previousPost %}
+				<li class="links-nextprev-prev">← Previous<br>
+					<a href="{{ previousPost.url }}">{{ previousPost.data.title }}</a>
+				</li>
+			{% endif %}
+			{%- if nextPost %}
+				<li class="links-nextprev-next">Next →<br>
+					<a href="{{ nextPost.url }}">{{ nextPost.data.title }}</a>
+				</li>
+			{% endif %}
+		</ul>
+	{%- endif %}
 {%- endif %}

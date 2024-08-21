@@ -7,7 +7,9 @@ import pluginNavigation from "@11ty/eleventy-navigation";
 import { Image, eleventyImageTransformPlugin } from "@11ty/eleventy-img";
 
 import pluginFilters from "./_config/filters.js";
-import { siteUrl } from './config.js';
+import { siteUrl } from "./config.js";
+import {readFileSync} from 'fs';
+
 
 /** @param {import("@11ty/eleventy").UserConfig} eleventyConfig */
 export default async function(eleventyConfig) {
@@ -34,7 +36,7 @@ export default async function(eleventyConfig) {
 
 	// Official plugins
 	eleventyConfig.addPlugin(pluginSyntaxHighlight, {
-		preAttributes: { tabindex: 0 }
+		preAttributes: { tabindex: 0 },
 	});
 	eleventyConfig.addPlugin(pluginNavigation);
 	eleventyConfig.addPlugin(HtmlBasePlugin);
@@ -60,46 +62,46 @@ export default async function(eleventyConfig) {
 			}
 		}
 	});
-		// Atom Feed
-		eleventyConfig.addPlugin(feedPlugin, {
-			outputPath: "/feed/posts.xml",
-			stylesheet: "pretty-atom-feed.xsl",
+	// Atom Feed
+	eleventyConfig.addPlugin(feedPlugin, {
+		outputPath: "/feed/posts.xml",
+		stylesheet: "pretty-atom-feed.xsl",
 			templateData: {
 			},
-			collection: {
-				name: "posts",
-				limit: 20,
-			},
-			metadata: {
-				language: "en",
-				title: "James Thinks Out Loud - Posts",
-				subtitle: "James thinks out loud - posts",
-				base: siteUrl,
-				author: {
+		collection: {
+			name: "posts",
+			limit: 20,
+		},
+		metadata: {
+			language: "en",
+			title: "James Thinks Out Loud - Posts",
+			subtitle: "James thinks out loud - posts",
+			base: siteUrl,
+			author: {
 					name: "James Magness"
 				}
 			}
-		});
-		// Atom Feed
-		eleventyConfig.addPlugin(feedPlugin, {
-			outputPath: "/feed/thoughts.xml",
-			stylesheet: "pretty-atom-feed.xsl",
+	});
+	// Atom Feed
+	eleventyConfig.addPlugin(feedPlugin, {
+		outputPath: "/feed/thoughts.xml",
+		stylesheet: "pretty-atom-feed.xsl",
 			templateData: {
 			},
-			collection: {
-				name: "thoughts",
-				limit: 20,
-			},
-			metadata: {
-				language: "en",
-				title: "James Thinks Out Loud - Thoughts",
-				subtitle: "James thinks out loud - thoughts",
-				base: siteUrl,
-				author: {
+		collection: {
+			name: "thoughts",
+			limit: 20,
+		},
+		metadata: {
+			language: "en",
+			title: "James Thinks Out Loud - Thoughts",
+			subtitle: "James thinks out loud - thoughts",
+			base: siteUrl,
+			author: {
 					name: "James Magness"
 				}
 			}
-		});
+	});
 
 	// Image optimization: https://www.11ty.dev/docs/plugins/image/#eleventy-transform
 	eleventyConfig.addPlugin(eleventyImageTransformPlugin, {
@@ -117,28 +119,34 @@ export default async function(eleventyConfig) {
 			// e.g. <img loading decoding> assigned on the HTML tag will override these values.
 			loading: "lazy",
 			decoding: "async",
-		}
+		},
 	});
 
+	eleventyConfig.addNunjucksAsyncShortcode( "svgIcon", async (path, fileName) => {
+		const fullPath = `./content/posts/img/banner/${fileName}.svg`;
+		// const fullPath = `./content/posts/img/banner/when-is-software-done.svg`;
+		console.log(fullPath);
+		// let relativeFilePath = `./src/svg/${file}.svg`;
+		let data = readFileSync(fullPath, function (err, contents) {
+			if (err) return err;
+			return contents;
+		});
 
-	eleventyConfig.addNunjucksAsyncShortcode("svgIcon", async (path, fileName) => {
-		  // const fullPath = `file:${process.cwd()}/content/posts/img/banner/${fileName}.svg`;
-		  const fullPath = `./content/posts/img/banner/${fileName}.svg`;
-		  console.log(fullPath);
-    const metadata = await new Image(fullPath, {
-      formats: ["svg"],
-      dryRun: true,
-    })
-		console.log(metadata.svg);
-			 return 'foo';
-			return data;
-  });
+		console.log(data.toString("utf8"));
+
+		return data.toString("utf8");
+		}
+	);
+
+	eleventyConfig.addNunjucksAsyncShortcode("svgII", async (file) => {
+
+	});
 
 	// Filters
 	eleventyConfig.addPlugin(pluginFilters);
 
 	// Customize Markdown library settings:
-	eleventyConfig.amendLibrary("md", mdLib => {
+	eleventyConfig.amendLibrary("md", (mdLib) => {
 		mdLib.use(markdownItAnchor, {
 			permalink: markdownItAnchor.permalink.ariaHidden({
 				placement: "after",
@@ -146,13 +154,13 @@ export default async function(eleventyConfig) {
 				symbol: "#",
 				ariaHidden: false,
 			}),
-			level: [1,2,3,4],
-			slugify: eleventyConfig.getFilter("slugify")
+			level: [1, 2, 3, 4],
+			slugify: eleventyConfig.getFilter("slugify"),
 		});
 	});
 
 	eleventyConfig.addShortcode("currentBuildDate", () => {
-		return (new Date()).toISOString();
+		return new Date().toISOString();
 	});
 
 	eleventyConfig.addGlobalData("theme", "default");
@@ -166,13 +174,10 @@ export default async function(eleventyConfig) {
 	// eleventyConfig.setServerPassthroughCopyBehavior("passthrough");
 
 
-eleventyConfig.addCollection("home", function (collectionApi) {
+	eleventyConfig.addCollection("home", function (collectionApi) {
 	return collectionApi.getFilteredByGlob(["content/posts/*", "content/thoughts/*"]);
-});
-
-
-
-};
+	});
+}
 
 export const config = {
 	// Control which files Eleventy will process
