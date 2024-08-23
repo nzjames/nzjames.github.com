@@ -132,15 +132,9 @@ export default async function(eleventyConfig) {
 			return contents;
 		});
 
-		console.log(data.toString("utf8"));
-
 		return data.toString("utf8");
 		}
 	);
-
-	eleventyConfig.addNunjucksAsyncShortcode("svgII", async (file) => {
-
-	});
 
 	// Filters
 	eleventyConfig.addPlugin(pluginFilters);
