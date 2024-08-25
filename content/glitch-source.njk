@@ -14,6 +14,15 @@ eleventyExcludeFromCollections: true
 			"pageUrl": "{{ page.url }}"
 		}{% if not loop.last %},{% endif %}
 {%- endfor %}
+	],
+	"thoughts": [
+{%- for page in collections.thoughts %}{% set absoluteUrl %}{{ page.url | htmlBaseUrl(metadata.url) }}{% endset %}
+		{
+			"title": "{{ page.data.title}}",
+			"fileName": "{{  page.data.title | slugify }}",
+			"pageUrl": "{{ page.url }}"
+		}{% if not loop.last %},{% endif %}
+{%- endfor %}
 	]
 }
 {% endif %}

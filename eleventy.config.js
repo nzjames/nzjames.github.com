@@ -58,7 +58,7 @@ export default async function(eleventyConfig) {
 			subtitle: "James thinks out loud",
 			base: siteUrl,
 			author: {
-				name: "James Magness"
+				name: "James M"
 			}
 		}
 	});
@@ -78,7 +78,7 @@ export default async function(eleventyConfig) {
 			subtitle: "James thinks out loud - posts",
 			base: siteUrl,
 			author: {
-					name: "James Magness"
+					name: "James M"
 				}
 			}
 	});
@@ -123,7 +123,7 @@ export default async function(eleventyConfig) {
 	});
 
 	eleventyConfig.addNunjucksAsyncShortcode( "svgIcon", async (path, fileName) => {
-		const fullPath = `./content/posts/img/banner/${fileName}.svg`;
+		const fullPath = `./content/${path}/img/banner/${fileName}.svg`;
 		// const fullPath = `./content/posts/img/banner/when-is-software-done.svg`;
 		console.log(fullPath);
 		// let relativeFilePath = `./src/svg/${file}.svg`;

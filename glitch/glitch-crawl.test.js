@@ -7,7 +7,7 @@ const host = "http://localhost";
 const port = "8099";
 const glitchPaperUrl = `${host}:${port}/glitch-paper.html`;
 
-const renderAndShoot = async (page, item) => {
+const renderAndShoot = async (page, item, area='posts') => {
 		const url = `${host}:${port}${item.pageUrl}`;
 		console.log(url);
 		await page.goto(url);
@@ -33,14 +33,14 @@ const renderAndShoot = async (page, item) => {
 		await page.getByText("Download PNG").click();
 		const download = await downloadPromise;
 		// Wait for the download process to complete and save the downloaded file somewhere.
-		await download.saveAs("content/posts/img/banner/" + download.suggestedFilename());
+		await download.saveAs(`content/${area}/img/banner/` + download.suggestedFilename());
 
 		// Start waiting for download before clicking. Note no await.
 		const downloadPromiseSVG = page.waitForEvent("download");
 		await page.getByText("Download SVG").click({ timeout: 50000 });
 		const downloadSVG = await downloadPromiseSVG;
 		// Wait for the download process to complete and save the downloaded file somewhere.
-		await downloadSVG.saveAs("content/posts/img/banner/" + downloadSVG.suggestedFilename());
+		await downloadSVG.saveAs(`content/${area}/img/banner/` + downloadSVG.suggestedFilename());
 
 }
 
@@ -54,4 +54,17 @@ test("crawl glitch posts", async ({ request, page }) => {
 		await renderAndShoot(page, item);
 	}
 	await renderAndShoot(page, testData.posts[0]);
+});
+
+
+test("crawl glitch thoughts", async ({ request, page }) => {
+	const dataUrl = `${host}:${port}/glitch.json`;
+	const testData = await (await request.get(dataUrl)).json();
+
+
+	for (let i = 0; i < testData.thoughts.length; i += 1) {
+		const item = testData.thoughts[i];
+		await renderAndShoot(page, item, 'thoughts');
+	}
+	await renderAndShoot(page, testData.thoughts[0], 'thoughts');
 });

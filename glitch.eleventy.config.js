@@ -76,6 +76,14 @@ export default async function (eleventyConfig) {
 		debugger;
 		return new Date().toISOString();
 	});
+
+	eleventyConfig.addNunjucksAsyncShortcode(
+		"svgIcon",
+		async (path, fileName) => {
+			return null;
+		}
+	);
+
 	// Features to make your build faster (when you need them)
 
 	// If your passthrough copy gets heavy and cumbersome, add this line
