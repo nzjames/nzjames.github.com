@@ -3,7 +3,7 @@ fileName = urlParams.get("img") || "hero.png";
 title = urlParams.get("title") || "kia ora bro";
 
 var values = {
-	amount: 13,
+	amount: 7,
 };
 
 var raster, group;
@@ -88,7 +88,8 @@ function onFrame(event) {
 		var url = URL.createObjectURL(blob);
 		document.getElementById("downloadSVG").href = url;
 		done = true;
-		group.scale(2.03);
+		//group.scale(2.03);
+		group.scale(1.2);
 		//nconsole.log(exportSVGLink.href);
 
 
