@@ -2,6 +2,7 @@
 :root {
 	--font-family: -apple-system, system-ui, sans-serif;
 	--font-family-monospace: Consolas, Menlo, Monaco, Andale Mono WT, Andale Mono, Lucida Console, Lucida Sans Typewriter, DejaVu Sans Mono, Bitstream Vera Sans Mono, Liberation Mono, Nimbus Mono L, Courier New, Courier, monospace;
+	--font-cartridge: 'Cartridge-Regular', var(--font-family);
 }
 
 /* Theme colors */
@@ -164,7 +165,7 @@ header {
 }
 .home-link {
 	margin-right: 2em;
-	font-family: 'Cartridge-Regular';
+	font-family: var(--font-cartridge);
 	font-size: 1.5rem;
 	letter-spacing: 0.01em;
 	text-transform: uppercase
@@ -273,7 +274,7 @@ a[href].header-anchor:focus,
 /* Headings */
 
 main > h1 {
-	font-family: 'Cartridge-Regular';
+	font-family: var(--font-cartridge);
 	letter-spacing: 0.01em;
 	font-weight: 400;
 
