@@ -1,39 +1,66 @@
-
 {%- if theme !== 'glitch' %}
 
- {%- css %}.postlist { counter-reset: start-from {{ (postslistCounter or postslist.length) + 1 }} }{% endcss %}
-<ol reversed class="postlist">
-{% for post in postslist | reverse %}
-	<li class="postlist-item{% if post.url == url %} postlist-item-active{% endif %}">
-			<a href="{{ post.url }}" class="postlist-link">
+	{%- css %}.postlist { counter-reset: start-from {{ (postslistCounter or postslist.length) + 1 }} }{% endcss %}
+	<style>
+		.postlist-item {
+
+		}
+		.thoughtlist-container {
+			padding: 1rem;
+		}
+		.thoughtlist-link[href]:visited,
+		.thoughtlist-link {
+			display: inline-block;
+			margin-bottom: 1rem;
+			padding: 0 0.5em;
+			font-family: Cartridge-Regular;
+			font-size: 2em;
+			color: white;
+			background: rgb(0, 0, 0, .7);
+			line-height: 1.5;
+		}
+		.thoughtlist-content {
+			padding: 1rem;
+			background: rgb(255,255,255,0.9);
+		}
+	</style>
+	<ol reversed class="postlist">
+		{% for post in postslist | reverse %}
+			<li class="postlist-item{% if post.url == url %} postlist-item-active{% endif %}">
+				{# <a href="{{ post.url }}" class="postlist-link">
 				<img src="/thoughts/img/banner/{{  post.data.title | slugify }}.png" alt="{{ post.data.title}}" style="width:100%; height:auto"/>
 			</a>
+ #}
+				<div class="thoughtlist-container" style="background-size: cover; background-repeat: repeat; background-image: url(data:image/svg+xml;base64,{% svgIcon 'thoughts', post.data.title | slugify, 'base64' %});">
 
- {% svgIcon 'thoughts', post.data.title | slugify %}
+					 {# {% svgIcon 'thoughts', post.data.title | slugify %} #}
 
+					<a href="{{ post.url }}" class="postlist-link thoughtlist-link">
+						{% if post.data.title %}{{ post.data.title }}
+						{% else %}
+							<code>{{ post.url }}</code>
+						{% endif %}
+					</a>
 
-		<a href="{{ post.url }}" class="postlist-link">{% if post.data.title %}{{ post.data.title }}{% else %}<code>{{ post.url }}</code>{% endif %}</a>
-		<div>
+					<div class="thoughtlist-content">
+						{{ post.content | safe }}
+						<time class="postlist-date" datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate("LLLL dd, yyyy, HH:mm") }}</time>
+					</div>
+				</div>
+			</li>
+		{% endfor %}
+	</ol>
+	<script>
+		try {
+			const heroSVGs = [...document.getElementsByTagName('svg')];
+			heroSVGs.forEach((heroSVG) => {
+				heroSVG.setAttribute('viewBox', '0,100,1080,607')
+				heroSVG.setAttribute('width', '100%');
+				heroSVG.setAttribute('height', '100%');
 
-			{{ post.content | safe }}
-
-		</div>
-		<time class="postlist-date" datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate("LLLL dd, yyyy, HH:mm") }}</time>
-	</li>
-{% endfor %}
-</ol>
-<script>
-	try {
-		const heroSVGs= [...document.getElementsByTagName('svg')];
-		heroSVGs.forEach( (heroSVG) => {
-		heroSVG.setAttribute('viewBox', '0,100,1080,607')
-		heroSVG.setAttribute('width', '100%');
-		heroSVG.setAttribute('height', '100%');
-
-
-		})
-	} catch (e) {
-		cosnole.log(e)
-	}
-</script>
+			})
+		} catch (e) {
+			cosnole.log(e)
+		}
+	</script>
 {% endif %}

@@ -122,7 +122,7 @@ export default async function(eleventyConfig) {
 		},
 	});
 
-	eleventyConfig.addNunjucksAsyncShortcode( "svgIcon", async (path, fileName) => {
+	eleventyConfig.addNunjucksAsyncShortcode( "svgIcon", async (path, fileName, type="string") => {
 		const fullPath = `./content/${path}/img/banner/${fileName}.svg`;
 		// const fullPath = `./content/posts/img/banner/when-is-software-done.svg`;
 		console.log(fullPath);
@@ -132,7 +132,11 @@ export default async function(eleventyConfig) {
 			return contents;
 		});
 
-		return data.toString("utf8");
+		if (type === 'base64') {
+			return data.toString('base64');;
+		} else {
+			return data.toString("utf8");
+		}
 		}
 	);
 
