@@ -76,23 +76,6 @@ module.exports = function(eleventyConfig) {
   });
   eleventyConfig.setLibrary("md", markdownLibrary);
 
-  // // Override Browsersync defaults (used only with --serve)
-  // eleventyConfig.setBrowserSyncConfig({
-  //   callbacks: {
-  //     ready: function(err, browserSync) {
-  //       const content_404 = fs.readFileSync('_site/404.html');
-
-  //       browserSync.addMiddleware("*", (req, res) => {
-  //         // Provides the 404 content without redirect.
-  //         res.writeHead(404, {"Content-Type": "text/html; charset=UTF-8"});
-  //         res.write(content_404);
-  //         res.end();
-  //       });
-  //     },
-  //   },
-  //   ui: false,
-  //   ghostMode: false
-  // });
   
   eleventyConfig.setServerOptions({
 		// Default values are shown:
@@ -171,7 +154,7 @@ module.exports = function(eleventyConfig) {
 
     // These are all optional (defaults are shown):
     dir: {
-      input: "./src",
+      input: "./src/content",
       includes: "_includes",
       data: "_data",
       output: "_site"
