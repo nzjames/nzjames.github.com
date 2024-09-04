@@ -128,6 +128,9 @@ export default async function(eleventyConfig) {
 
 
 	eleventyConfig.addShortcode("metaImage", async function (path, fileName) {
+		if (!path || !fileName)
+		{return '';} else {
+		try {
 		const src = `content/${path}/img/banner/${fileName}.png`;
 		let metadata = await Image(src, {
 			widths: [1200],
@@ -137,6 +140,9 @@ export default async function(eleventyConfig) {
 		let data = metadata.png[metadata.png.length - 1];
 		// console.log(data);
 		return `<meta property="og:image" content="${data.url}" />`;
+	} catch (e) {
+		console.log('No image found for ', path, fileName)
+	}}
 	});
 
 	eleventyConfig.addNunjucksAsyncShortcode( "svgIcon", async (path, fileName, type="string") => {
