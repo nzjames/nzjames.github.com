@@ -1,17 +1,20 @@
+---
+---
 <!doctype html>
 <html lang="{{ metadata.language }}">
 	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>{{ title or metadata.title }}</title>
-		<meta name="description" content="{{ description or metadata.description }}">
 
 		{#- Atom and JSON feeds included by default #}
 		<link rel="alternate" href="feed/atom.njk" type="application/atom+xml" title="{{ metadata.title }}">
 		<link rel="alternate" href="feed/json.njk" type="application/json" title="{{ metadata.title }}">
 
 		{#- Uncomment this if you’d like folks to know that you used Eleventy to build your site!  #}
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="{{ description or metadata.description }}">
 		<meta name="generator" content="{{ eleventy.generator }}">
+		{% metaImage path, title | slugify %}
 		<style>
 			@font-face {
 				font-family: 'Cartridge-Regular';

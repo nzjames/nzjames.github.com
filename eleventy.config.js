@@ -124,23 +124,7 @@ export default async function(eleventyConfig) {
 		},
 	});
 
-	// eleventyConfig.addShortcode("image05", async function (src, alt) {
-	// 	if (alt === undefined) {
-	// 		// You bet we throw an error on missing alt (alt="" works okay)
-	// 		throw new Error(`Missing \`alt\` on myImage from: ${src}`);
-	// 	}
 
-	// 	let metadata = await Image(src, {
-	// 		widths: [1200],
-	// 		formats: ["png"],
-	// 	});
-
-	// 	let data = metadata.png[metadata.png.length - 1];
-	// 	console.log(data);
-	// 	// return (JSON.stringify(data))
-	// 	return `<meta property="og:image" content="${data.url}" />`;
-	// 	// return `<meta src="${data.url}" width="${data.width}" height="${data.height}" alt="${alt}" loading="lazy" decoding="async">`;
-	// });
 
 
 	eleventyConfig.addShortcode("metaImage", async function (path, fileName) {

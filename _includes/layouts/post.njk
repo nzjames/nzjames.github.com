@@ -1,12 +1,12 @@
 ---
 layout: layouts/base.njk
+path: posts
 ---
 {# Only include the syntax highlighter CSS on blog posts #}
 {%- css %}{% include "node_modules/prismjs/themes/prism-okaidia.css" %}{% endcss %}
 {%- css %}{% include "public/css/prism-diff.css" %}{%- endcss %}
 {%- css %}{% include "public/css/post.css" %}{%- endcss %}
 
-{% metaImage 'posts', title | slugify %}
 {% svgIcon 'posts', title | slugify %}
 <script>
 	try {
