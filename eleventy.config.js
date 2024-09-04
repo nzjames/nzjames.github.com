@@ -4,7 +4,8 @@ import { InputPathToUrlTransformPlugin, HtmlBasePlugin } from "@11ty/eleventy";
 import { feedPlugin } from "@11ty/eleventy-plugin-rss";
 import pluginSyntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
 import pluginNavigation from "@11ty/eleventy-navigation";
-import { Image, eleventyImageTransformPlugin } from "@11ty/eleventy-img";
+import {  eleventyImageTransformPlugin } from "@11ty/eleventy-img";
+import  Image from "@11ty/eleventy-img";
 
 import pluginFilters from "./_config/filters.js";
 import { siteUrl } from "./config.js";
@@ -18,6 +19,7 @@ export default async function(eleventyConfig) {
 	eleventyConfig
 		.addPassthroughCopy({
 			"./public/": "/",
+			"./img/": "/img/",
 			"./node_modules/prismjs/themes/prism-okaidia.css": "/css/prism-okaidia.css"
 		})
 		.addPassthroughCopy("./content/feed/pretty-atom-feed.xsl");
@@ -120,6 +122,37 @@ export default async function(eleventyConfig) {
 			loading: "lazy",
 			decoding: "async",
 		},
+	});
+
+	// eleventyConfig.addShortcode("image05", async function (src, alt) {
+	// 	if (alt === undefined) {
+	// 		// You bet we throw an error on missing alt (alt="" works okay)
+	// 		throw new Error(`Missing \`alt\` on myImage from: ${src}`);
+	// 	}
+
+	// 	let metadata = await Image(src, {
+	// 		widths: [1200],
+	// 		formats: ["png"],
+	// 	});
+
+	// 	let data = metadata.png[metadata.png.length - 1];
+	// 	console.log(data);
+	// 	// return (JSON.stringify(data))
+	// 	return `<meta property="og:image" content="${data.url}" />`;
+	// 	// return `<meta src="${data.url}" width="${data.width}" height="${data.height}" alt="${alt}" loading="lazy" decoding="async">`;
+	// });
+
+
+	eleventyConfig.addShortcode("metaImage", async function (path, fileName) {
+		const src = `content/${path}/img/banner/${fileName}.png`;
+		let metadata = await Image(src, {
+			widths: [1200],
+			formats: ["png"],
+		});
+
+		let data = metadata.png[metadata.png.length - 1];
+		// console.log(data);
+		return `<meta property="og:image" content="${data.url}" />`;
 	});
 
 	eleventyConfig.addNunjucksAsyncShortcode( "svgIcon", async (path, fileName, type="string") => {
