@@ -83,7 +83,9 @@ export default async function (eleventyConfig) {
 			return null;
 		}
 	);
-
+	eleventyConfig.addShortcode("metaImage", async function (path, fileName) {
+		return null;
+	});
 	// Features to make your build faster (when you need them)
 
 	// If your passthrough copy gets heavy and cumbersome, add this line
