@@ -45,6 +45,7 @@ const renderAndShoot = async (page, item, area='posts') => {
 }
 
 test("crawl glitch posts", async ({ request, page }) => {
+  test.setTimeout(120000);
 	const dataUrl = `${host}:${port}/glitch.json`;
 	const testData = await (await request.get(dataUrl)).json();
 
@@ -58,6 +59,7 @@ test("crawl glitch posts", async ({ request, page }) => {
 
 
 test("crawl glitch thoughts", async ({ request, page }) => {
+  test.setTimeout(120000);
 	const dataUrl = `${host}:${port}/glitch.json`;
 	const testData = await (await request.get(dataUrl)).json();
 

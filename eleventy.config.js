@@ -4,23 +4,23 @@ import { InputPathToUrlTransformPlugin, HtmlBasePlugin } from "@11ty/eleventy";
 import { feedPlugin } from "@11ty/eleventy-plugin-rss";
 import pluginSyntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
 import pluginNavigation from "@11ty/eleventy-navigation";
-import {  eleventyImageTransformPlugin } from "@11ty/eleventy-img";
-import  Image from "@11ty/eleventy-img";
+import { eleventyImageTransformPlugin } from "@11ty/eleventy-img";
+import Image from "@11ty/eleventy-img";
 
 import pluginFilters from "./_config/filters.js";
 import { siteUrl } from "./config.js";
-import {readFileSync} from 'fs';
-
+import { readFileSync } from "fs";
 
 /** @param {import("@11ty/eleventy").UserConfig} eleventyConfig */
-export default async function(eleventyConfig) {
+export default async function (eleventyConfig) {
 	// Copy the contents of the `public` folder to the output folder
 	// For example, `./public/css/` ends up in `_site/css/`
 	eleventyConfig
 		.addPassthroughCopy({
 			"./public/": "/",
 			"./img/": "/img/",
-			"./node_modules/prismjs/themes/prism-okaidia.css": "/css/prism-okaidia.css"
+			"./node_modules/prismjs/themes/prism-okaidia.css":
+				"/css/prism-okaidia.css",
 		})
 		.addPassthroughCopy("./content/feed/pretty-atom-feed.xsl");
 
@@ -48,8 +48,7 @@ export default async function(eleventyConfig) {
 	eleventyConfig.addPlugin(feedPlugin, {
 		outputPath: "/feed/feed.xml",
 		stylesheet: "pretty-atom-feed.xsl",
-		templateData: {
-		},
+		templateData: {},
 		collection: {
 			name: "home",
 			limit: 10,
@@ -60,16 +59,15 @@ export default async function(eleventyConfig) {
 			subtitle: "James thinks out loud",
 			base: siteUrl,
 			author: {
-				name: "James M"
-			}
-		}
+				name: "James M",
+			},
+		},
 	});
 	// Atom Feed
 	eleventyConfig.addPlugin(feedPlugin, {
 		outputPath: "/feed/posts.xml",
 		stylesheet: "pretty-atom-feed.xsl",
-			templateData: {
-			},
+		templateData: {},
 		collection: {
 			name: "posts",
 			limit: 20,
@@ -80,16 +78,15 @@ export default async function(eleventyConfig) {
 			subtitle: "James thinks out loud - posts",
 			base: siteUrl,
 			author: {
-					name: "James M"
-				}
-			}
+				name: "James M",
+			},
+		},
 	});
 	// Atom Feed
 	eleventyConfig.addPlugin(feedPlugin, {
 		outputPath: "/feed/thoughts.xml",
 		stylesheet: "pretty-atom-feed.xsl",
-			templateData: {
-			},
+		templateData: {},
 		collection: {
 			name: "thoughts",
 			limit: 20,
@@ -100,9 +97,9 @@ export default async function(eleventyConfig) {
 			subtitle: "James thinks out loud - thoughts",
 			base: siteUrl,
 			author: {
-					name: "James Magness"
-				}
-			}
+				name: "James Magness",
+			},
+		},
 	});
 
 	// Image optimization: https://www.11ty.dev/docs/plugins/image/#eleventy-transform
@@ -116,7 +113,6 @@ export default async function(eleventyConfig) {
 		// widths: ["auto"],
 		svgShortCircuit: true,
 
-
 		defaultAttributes: {
 			// e.g. <img loading decoding> assigned on the HTML tag will override these values.
 			loading: "lazy",
@@ -124,44 +120,49 @@ export default async function(eleventyConfig) {
 		},
 	});
 
-
-
-
 	eleventyConfig.addShortcode("metaImage", async function (path, fileName) {
-		if (!path || !fileName)
-		{return '';} else {
-		try {
-		const src = `content/${path}/img/banner/${fileName}.png`;
-		let metadata = await Image(src, {
-			widths: [1200],
-			formats: ["png"],
-		});
+		if (!path || !fileName) {
+			return "";
+		} else {
+			try {
+				const src = `content/${path}/img/banner/${fileName}.png`;
+				let metadata = await Image(src, {
+					widths: [1200],
+					formats: ["png"],
+				});
 
-		let data = metadata.png[metadata.png.length - 1];
-		// console.log(data);
-		return `<meta property="og:image" content="${data.url}" />`;
-	} catch (e) {
-		console.log('No image found for ', path, fileName)
-	}}
+				let data = metadata.png[metadata.png.length - 1];
+				return `<meta property="og:image" content="${data.url}" />`;
+			} catch (e) {
+				console.log("No image found for ", path, fileName);
+			}
+		}
 	});
 
-	eleventyConfig.addNunjucksAsyncShortcode( "svgIcon", async (path, fileName, type="string") => {
-		const fullPath = `./content/${path}/img/banner/${fileName}.svg`;
-		// const fullPath = `./content/posts/img/banner/when-is-software-done.svg`;
-		console.log(fullPath);
-		// let relativeFilePath = `./src/svg/${file}.svg`;
-		let data = readFileSync(fullPath, function (err, contents) {
-			if (err) return err;
-			return contents;
-		});
-
-		if (type === 'base64') {
-			return data.toString('base64');;
+	eleventyConfig.addNunjucksAsyncShortcode( "svgIcon", async function (path, fileName, type = "string") {
+		if (!path || !fileName) {
+			return "";
 		} else {
-			return data.toString("utf8");
+			try {
+				const fullPath = `./content/${path}/img/banner/${fileName}.svg`;
+				// const fullPath = `./content/posts/img/banner/when-is-software-done.svg`;
+				console.log(fullPath);
+				// let relativeFilePath = `./src/svg/${file}.svg`;
+				let data = readFileSync(fullPath, function (err, contents) {
+					if (err) return err;
+					return contents;
+				});
+
+				if (type === "base64") {
+					return data.toString("base64");
+				} else {
+					return data.toString("utf8");
+				}
+			}catch (e) {
+				console.log("No SVG found for ", path, fileName);
+			}
 		}
-		}
-	);
+	});
 
 	// Filters
 	eleventyConfig.addPlugin(pluginFilters);
@@ -194,22 +195,18 @@ export default async function(eleventyConfig) {
 
 	// eleventyConfig.setServerPassthroughCopyBehavior("passthrough");
 
-
 	eleventyConfig.addCollection("home", function (collectionApi) {
-	return collectionApi.getFilteredByGlob(["content/posts/*", "content/thoughts/*"]);
+		return collectionApi.getFilteredByGlob([
+			"content/posts/*",
+			"content/thoughts/*",
+		]);
 	});
 }
 
 export const config = {
 	// Control which files Eleventy will process
 	// e.g.: *.md, *.njk, *.html, *.liquid
-	templateFormats: [
-		"md",
-		"njk",
-		"html",
-		"liquid",
-		"11ty.js",
-	],
+	templateFormats: ["md", "njk", "html", "liquid", "11ty.js"],
 
 	// Pre-process *.md files with: (default: `liquid`)
 	markdownTemplateEngine: "njk",
@@ -219,10 +216,10 @@ export const config = {
 
 	// These are all optional:
 	dir: {
-		input: "content",          // default: "."
-		includes: "../_includes",  // default: "_includes" (`input` relative)
-		data: "../_data",          // default: "_data" (`input` relative)
-		output: "_site"
+		input: "content", // default: "."
+		includes: "../_includes", // default: "_includes" (`input` relative)
+		data: "../_data", // default: "_data" (`input` relative)
+		output: "_site",
 	},
 
 	// -----------------------------------------------------------------
