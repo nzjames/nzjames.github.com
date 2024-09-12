@@ -132,7 +132,7 @@ export default async function (eleventyConfig) {
 				});
 
 				let data = metadata.png[metadata.png.length - 1];
-				return `<meta property="og:image" content="${data.url}" />`;
+				return `<meta property="og:image" content="${siteUrl}${data.url}" />`;
 			} catch (e) {
 				console.log("No image found for ", path, fileName);
 			}
