@@ -1,6 +1,6 @@
 import { siteUrl } from "../config.js"
 
-export const metadata = {
+export default {
 	title: "James Thinks Out Loud",
 	url: siteUrl,
 	language: "en",
@@ -11,5 +11,3 @@ export const metadata = {
 		url: "https://nzjames.com/about-me/"
 	}
 }
-
-export default metadata;

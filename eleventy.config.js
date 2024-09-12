@@ -8,7 +8,7 @@ import { eleventyImageTransformPlugin } from "@11ty/eleventy-img";
 import Image from "@11ty/eleventy-img";
 
 import pluginFilters from "./_config/filters.js";
-import { metadata } from "./_data/metadata.js";
+import metadata from "./_data/metadata.js";
 import { siteUrl, feedPrefix } from "./config.js";
 import { readFileSync } from "fs";
 
