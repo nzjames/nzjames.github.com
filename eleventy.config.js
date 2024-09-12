@@ -74,8 +74,8 @@ export default async function (eleventyConfig) {
 		},
 		metadata: {
 			language: "en",
-			title: "James Thinks Out Loud - Posts",
-			subtitle: "James thinks out loud - posts",
+			title: "Posts - James Thinks Out Loud",
+			subtitle: "Posts from #james-thinks-out-loud",
 			base: siteUrl,
 			author: {
 				name: "James M",
@@ -93,8 +93,8 @@ export default async function (eleventyConfig) {
 		},
 		metadata: {
 			language: "en",
-			title: "James Thinks Out Loud - Thoughts",
-			subtitle: "James thinks out loud - thoughts",
+			title: "Thoughts - James Thinks Out Loud",
+			subtitle: "Thoughts from #james-thinks-out-loud",
 			base: siteUrl,
 			author: {
 				name: "James Magness",
@@ -120,7 +120,7 @@ export default async function (eleventyConfig) {
 		},
 	});
 
-	eleventyConfig.addShortcode("metaImage", async function (path, fileName) {
+	eleventyConfig.addShortcode("metaImage", async function (path, fileName, title='', imgAlt=title) {
 		if (!path || !fileName) {
 			return "";
 		} else {
