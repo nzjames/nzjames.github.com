@@ -8,7 +8,8 @@ import { eleventyImageTransformPlugin } from "@11ty/eleventy-img";
 import Image from "@11ty/eleventy-img";
 
 import pluginFilters from "./_config/filters.js";
-import { siteUrl } from "./config.js";
+import { metadata } from "./_data/metadata.js";
+import { siteUrl, feedPrefix } from "./config.js";
 import { readFileSync } from "fs";
 
 /** @param {import("@11ty/eleventy").UserConfig} eleventyConfig */
@@ -55,12 +56,10 @@ export default async function (eleventyConfig) {
 		},
 		metadata: {
 			language: "en",
-			title: "James Thinks Out Loud",
+			title: [feedPrefix, metadata.title].filter(Boolean).join(' - '),
 			subtitle: "James thinks out loud",
 			base: siteUrl,
-			author: {
-				name: "James M",
-			},
+			author: metadata.author
 		},
 	});
 	// Atom Feed
@@ -74,12 +73,10 @@ export default async function (eleventyConfig) {
 		},
 		metadata: {
 			language: "en",
-			title: "Posts - James Thinks Out Loud",
+			title: [feedPrefix, "Posts", metadata.title].filter(Boolean).join(' - '),
 			subtitle: "Posts from #james-thinks-out-loud",
 			base: siteUrl,
-			author: {
-				name: "James M",
-			},
+			author: metadata.author
 		},
 	});
 	// Atom Feed
@@ -93,12 +90,10 @@ export default async function (eleventyConfig) {
 		},
 		metadata: {
 			language: "en",
-			title: "Thoughts - James Thinks Out Loud",
+			title: [feedPrefix, "Thoughts", metadata.title].filter(Boolean).join(' - '),
 			subtitle: "Thoughts from #james-thinks-out-loud",
 			base: siteUrl,
-			author: {
-				name: "James Magness",
-			},
+			author: metadata.author
 		},
 	});
 

@@ -8,3 +8,8 @@ export const siteUrl = (()=> {
 	default: return 'http://localhost:8080'
 	}
 })();
+
+export const feedPrefix = (()=> {
+	if (deploymentEnv === 'production') return '';
+	return deploymentEnv;
+})();

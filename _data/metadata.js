@@ -1,13 +1,15 @@
 import { siteUrl } from "../config.js"
 
-export default {
+export const metadata = {
 	title: "James Thinks Out Loud",
 	url: siteUrl,
 	language: "en",
 	description: "James thinks out loud",
 	author: {
-		name: "James Magness",
+		name: "James M",
 		email: "",
 		url: "https://nzjames.com/about-me/"
 	}
 }
+
+export default metadata;
