@@ -12,7 +12,8 @@
 		"debugstart": "DEBUG=Eleventy* npx @11ty/eleventy --serve --quiet",
 		"benchmark": "DEBUG=Eleventy:Benchmark* npx @11ty/eleventy",
 		"deploy": "STAGE=staging npm run build; fly deploy -c fly-staging.toml --dns-checks=false",
-		"deploy:prod": "STAGE=production npm run build; fly deploy -c fly-production.toml --dns-checks=false"
+		"deploy:prod": "STAGE=production npm run build; fly deploy -c fly-production.toml --dns-checks=false",
+		"glitch": "npx playwright test -c _glitch"
 	},
 	"repository": {
 		"type": "git",

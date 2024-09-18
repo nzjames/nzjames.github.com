@@ -127,7 +127,13 @@ export default async function (eleventyConfig) {
 				});
 
 				let data = metadata.png[metadata.png.length - 1];
-				return `<meta property="og:image" content="${siteUrl}${data.url}" />`;
+				return (
+		`<meta property="og:image" content="${siteUrl}${data.url}" >
+		<meta property="og:image:width" content="1200">
+		<meta property="og:image:height" content="675">
+		<meta property="og:image:alt" content="${imgAlt}">
+		<meta property="og:image:type" content="image/png">
+		<meta name="twitter:image" content="${siteUrl}${data.url}" />`);
 			} catch (e) {
 				console.log("No image found for ", path, fileName);
 			}
