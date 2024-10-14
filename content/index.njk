@@ -2,7 +2,6 @@
 
 numberOfLatestPostsToShow: 10
 ---
-<h1>Home</h1>
 {% set postsCount = collections.home | length %}
 {% set latestPostsCount = postsCount | min(numberOfLatestPostsToShow) %}
 

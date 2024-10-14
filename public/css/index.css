@@ -1,10 +1,14 @@
-
 /*************/
 /* Defaults */
 /*************/
 
 :root {
-	--font-cartridge: 'Cartridge-Regular', var(--font-humanist);
+	--font-cartridge: "Cartridge-Regular", var(--font-humanist);
+}
+
+body {
+	margin-inline: auto;
+	max-width: 50rem;
 }
 
 /* Header */
@@ -21,7 +25,7 @@ header {
 	font-family: var(--font-cartridge);
 	font-size: 1.5rem;
 	letter-spacing: 0.01em;
-	text-transform: uppercase
+	text-transform: uppercase;
 }
 
 /* Nav */
@@ -48,6 +52,60 @@ main {
 	padding: var(--size-3);
 }
 
+.card {
+	/* no radius when fullscreen */
+	border-radius: var(--radius-conditional-2);
+	border: var(--border-size-1) solid var(--gray-5);
+	display: grid;
+	gap: var(--size-2);
+	padding: var(--size-7);
+	box-shadow: var(--shadow-4);
+}
+.draft {
+	border-radius: var(--radius-drawn-1);
+	background-image: var(--gradient-6), var(--noise-4);
+
+	background-size: cover;
+}
+
+.postlist {
+	display: flex;
+	flex-direction: column;
+	gap: var(--size-fluid-3);
+	margin: 0;
+	padding: 0;
+
+	& > li {
+		max-inline-size: unset;
+		padding: 0;
+		list-style: none;
+	}
+
+	.tag {
+		font-weight: var(--font-weight-6);
+		text-align: right;
+	}
+
+	& h2 {
+		font-family: var(--font-cartridge);
+		max-inline-size: none;
+		font-size: var(--font-size-5);
+		font-weight: var(--font-weight-4);
+	}
+
+	section {
+		line-height:1.5;
+
+		p {
+			margin-bottom: var(--size-3);
+		}
+	}
+
+	.timestamp {
+		font-size: var(--font-size-0);
+	}
+}
+
 /* Headings */
 
 main > h1 {
@@ -60,8 +118,6 @@ main > h1 {
 h2 + .header-anchor {
 	font-size: 1.5em;
 }
-
-
 
 /*************/
 /* Utilities */

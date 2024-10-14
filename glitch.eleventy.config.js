@@ -86,6 +86,9 @@ export default async function (eleventyConfig) {
 	eleventyConfig.addShortcode("metaImage", async function (path, fileName) {
 		return null;
 	});
+	eleventyConfig.addFilter("formatTag", function (s) {
+		return null;
+	});
 	// Features to make your build faster (when you need them)
 
 	// If your passthrough copy gets heavy and cumbersome, add this line
