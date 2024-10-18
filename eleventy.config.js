@@ -140,6 +140,13 @@ export default async function (eleventyConfig) {
 		}
 	});
 
+	eleventyConfig.addFilter("formatTag", function (s) {
+	if (s && s.length > 1) {
+		const formattedTag = `#${s.slice(0, -1)}`;
+		return formattedTag;
+	}
+	});
+
 	eleventyConfig.addNunjucksAsyncShortcode( "svgIcon", async function (path, fileName, type = "string") {
 		if (!path || !fileName) {
 			return "";

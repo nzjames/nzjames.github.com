@@ -7,6 +7,7 @@ path: posts
 {%- css %}{% include "public/css/prism-diff.css" %}{%- endcss %}
 {%- css %}{% include "public/css/post.css" %}{%- endcss %}
 
+<div class="card">
 {% svgIcon 'posts', title | slugify %}
 <script>
 	try {
@@ -54,3 +55,4 @@ path: posts
 		</ul>
 	{%- endif %}
 {%- endif %}
+</div>

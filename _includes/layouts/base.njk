@@ -14,6 +14,12 @@
 
 		{#- Uncomment this if you’d like folks to know that you used Eleventy to build your site!  #}
 		<style>
+			/* the props */
+			@import "https://unpkg.com/open-props";
+
+			/* optional imports that use the props */
+			@import "https://unpkg.com/open-props/normalize.min.css";
+			@import "https://unpkg.com/open-props/buttons.min.css";
 			@font-face {
 				font-family: 'Cartridge-Regular';
 				src: url("https://com-zeronode-fonts.fly.dev/Cartridge/Cartridge-Regular.woff2") format('woff2'), url("https://com-zeronode-fonts.fly.dev/Cartridge/Cartridge-Regular.woff") format('woff');
@@ -33,7 +39,7 @@
 		#}
 
 		{#- Add an arbitrary string to the bundle #}
-		{%- css %}* { box-sizing: border-box; }{% endcss %}
+		{# {%- css %}* { box-sizing: border-box; }{% endcss %} #}
 		{#- Add the contents of a file to the bundle #}
 		{%- css %}{% include "public/css/index.css" %}{% endcss %}
 		{#- Or add from node_modules #}
@@ -97,7 +103,7 @@
 			</nav>
 		</header>
 
-		<main id="skip">
+		<main id="skip" >
 			{{ content | safe }}
 		</main>
 

@@ -1,9 +1,27 @@
 {%- css %}.postlist { counter-reset: start-from {{ (postslistCounter or postslist.length) + 1 }} }{% endcss %}
-<ol reversed class="postlist">
+<ul reversed class="postlist">
 {% for post in postslist | reverse %}
-	<li class="postlist-item{% if post.url == url %} postlist-item-active{% endif %}">
-		<a href="{{ post.url }}" class="postlist-link">{% if post.data.title %}{{ post.data.title }}{% else %}<code>{{ post.url }}</code>{% endif %}</a>
+	<li>
+		<article class="card {% if post.data.draft %} draft {%endif %}">
+
+		<div class="card-header">
+			<h2>
+			<a href="{{ post.url }}" class="postlist-link">{% if post.data.title %}{{ post.data.title }}{% else %}<code>{{ post.url }}</code>{% endif %}</a>
+			</h2>
+			<div class="tag">
+				{% if post.data.draft %} DRAFT {%endif %}
+				{% for tag in post.data.tags %}
+				{{ tag | formatTag }}
+				{% endfor %}
+			</div>
+		</div>
+		<section>
+			{{ post.content | safe }}
+		</section>
+		<div class="timestamp">
 		<time class="postlist-date" datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate("LLLL yyyy") }}</time>
+		</div>
+		</article>
 	</li>
 {% endfor %}
-</ol>
+</ul>
