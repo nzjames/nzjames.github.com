@@ -18,6 +18,10 @@ header {
 	flex-wrap: wrap;
 	align-items: center;
 	padding: var(--size-fluid-2);
+
+	& a:visited {
+		color: var(--text-1);
+	}
 }
 
 .home-link {
