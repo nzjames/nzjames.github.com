@@ -8,6 +8,8 @@ import pluginNavigation from "@11ty/eleventy-navigation";
 import { eleventyImageTransformPlugin } from "@11ty/eleventy-img";
 
 import pluginFilters from "./_config/filters.js";
+import metadata from "./_data/metadata.js";
+import { siteUrl, feedPrefix } from "./config.js";
 
 /** @param {import("@11ty/eleventy").UserConfig} eleventyConfig */
 export default async function (eleventyConfig) {
@@ -46,6 +48,60 @@ export default async function (eleventyConfig) {
 	eleventyConfig.addPlugin(HtmlBasePlugin);
 	eleventyConfig.addPlugin(InputPathToUrlTransformPlugin);
 
+
+		// Atom Feed
+		eleventyConfig.addPlugin(feedPlugin, {
+			outputPath: "/feed/feed.xml",
+			stylesheet: "pretty-atom-feed.xsl",
+			templateData: {},
+			collection: {
+				name: "home",
+				limit: 10,
+			},
+			metadata: {
+				language: "en",
+				title: [feedPrefix, metadata.title].filter(Boolean).join(' - '),
+				subtitle: "James thinks out loud",
+				base: siteUrl,
+				author: metadata.author
+			},
+		});
+		// Atom Feed
+		eleventyConfig.addPlugin(feedPlugin, {
+			outputPath: "/feed/posts.xml",
+			stylesheet: "pretty-atom-feed.xsl",
+			templateData: {},
+			collection: {
+				name: "posts",
+				limit: 20,
+			},
+			metadata: {
+				language: "en",
+				title: [feedPrefix, "Posts", metadata.title].filter(Boolean).join(' - '),
+				subtitle: "Posts from #james-thinks-out-loud",
+				base: siteUrl,
+				author: metadata.author
+			},
+		});
+		// Atom Feed
+		eleventyConfig.addPlugin(feedPlugin, {
+			outputPath: "/feed/thoughts.xml",
+			stylesheet: "pretty-atom-feed.xsl",
+			templateData: {},
+			collection: {
+				name: "thoughts",
+				limit: 20,
+			},
+			metadata: {
+				language: "en",
+				title: [feedPrefix, "Thoughts", metadata.title].filter(Boolean).join(' - '),
+				subtitle: "Thoughts from #james-thinks-out-loud",
+				base: siteUrl,
+				author: metadata.author
+			},
+		});
+
+
 	// Filters
 	eleventyConfig.addPlugin(pluginFilters);
 
@@ -61,6 +117,24 @@ export default async function (eleventyConfig) {
 			level: [1, 2, 3, 4],
 			slugify: eleventyConfig.getFilter("slugify"),
 		});
+	});
+
+	// Image optimization: https://www.11ty.dev/docs/plugins/image/#eleventy-transform
+	eleventyConfig.addPlugin(eleventyImageTransformPlugin, {
+		// File extensions to process in _site folder
+		extensions: "html",
+
+		// Output formats for each image.
+		formats: ["avif", "webp", "auto", "svg"],
+
+		// widths: ["auto"],
+		svgShortCircuit: true,
+
+		defaultAttributes: {
+			// e.g. <img loading decoding> assigned on the HTML tag will override these values.
+			loading: "lazy",
+			decoding: "async",
+		},
 	});
 
 	eleventyConfig.addFilter("stringify", (data) => {

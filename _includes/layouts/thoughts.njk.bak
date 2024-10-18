@@ -6,32 +6,8 @@ path: thoughts
 {%- css %}{% include "node_modules/prismjs/themes/prism-okaidia.css" %}{% endcss %}
 {%- css %}{% include "public/css/prism-diff.css" %}{%- endcss %}
 
-<ul reversed class="postlist">
-	<li>
-		<article class="card {% if page.data.draft %} draft {%endif %}">
 
-		<div class="card-header">
-			<h2 >
-			<a href="{{ url }}" class="postlist-link">{% if title %}{{ title }}{% else %}<code>{{ url }}</code>{% endif %}</a>
-			</h2>
-			<div class="tag">
-				{% if page.data.draft %} DRAFT {%endif %}
-				{% for tag in tags %}
-				{{ tag | formatTag }}
-				{% endfor %}
-			</div>
-		</div>
-		<section>
-			{{ content | safe }}
-		</section>
-		<div class="timestamp">
-		<time class="postlist-date" datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate("LLLL yyyy") }}</time>
-		</div>
-		</article>
-	</li>
-</ul>
-
-{# <h1>{{ title }}</h1>
+<h1>{{ title }}</h1>
 
 {{ content | safe }}
 
@@ -48,4 +24,4 @@ path: thoughts
 	{%- if nextPost %}<li class="links-nextprev-next">Next →<br><a href="{{ nextPost.url }}">{{ nextPost.data.title }}</a></li>{% endif %}
 </ul>
 {%- endif %}
-{%- endif %} #}
+{%- endif %}
