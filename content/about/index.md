@@ -5,7 +5,7 @@ eleventyNavigation:
 ---
 # About
 
-James thinks out loud. Modern social media is a dumpster fire. Own your own content.
+James thinks out loud. Social media is a dumpster fire. Own your own content.
 
 * [https://nzjames.com](https://nzjames.com)
 * [https://mastodon.nz/@nzjames](https://mastodon.nz/@nzjames)
