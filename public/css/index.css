@@ -161,7 +161,12 @@ h2 + .header-anchor {
 	width: 1px;
 }
 
-code[class*="language-"], pre[class*="language-"]  {
+code {
+	text-wrap: balance;
+}
+
+section code[class*="language-"], section pre[class*="language-"]  {
 	font-size: var(--font-size-0);
-	max-width: 43rem;
+	text-wrap: balance;
+	min-width: 100%;
 }
