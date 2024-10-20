@@ -114,6 +114,7 @@ h1 {
 	& h2 {
 		font-family: var(--font-cartridge);
 		max-inline-size: none;
+		margin-bottom: var(--size-3);
 		font-size: var(--font-size-5);
 		font-weight: var(--font-weight-4);
 	}
